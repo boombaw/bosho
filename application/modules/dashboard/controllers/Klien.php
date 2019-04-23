@@ -17,18 +17,19 @@ public function __construct(){
 	}
 	public function index1(){
 		$klien = $this->model_crud->getData('tbl_galeri','id_galeri','desc');
-			foreach($klien as $row){
-				echo	'<center>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="thumbnail">
-								<a href="'.base_url().'unggah/klien/'.$row->image.'">
-									<img class="img-responsive thumbnail" src="'.base_url().'unggah/klien/'.$row->image.'" style="max-height:90px;margin-bottom:5px;">
-								</a>
-								<button type="button" class="btn btn-xs bg-red waves-effect waves-light rem-image" style="margin-bottom:15px;">Remove Image</button>
-							</div>
+
+		foreach($klien as $row){
+			echo	'<center>
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail">
+							<a href="'.base_url().'unggah/klien/'.$row->image.'">
+								<img class="img-responsive thumbnail" src="'.base_url().'unggah/klien/'.$row->image.'" style="max-height:90px;margin-bottom:5px;">
+							</a>
+							<button type="button" class="btn btn-xs bg-red waves-effect waves-light rem-image" data-attr="'.$row->token.'" style="margin-bottom:15px;">Remove Image</button>
 						</div>
-						</center>';
-			} 
+					</div>
+					</center>';
+		} 
 	}
 	//Untuk proses upload foto
 	function proses_upload(){

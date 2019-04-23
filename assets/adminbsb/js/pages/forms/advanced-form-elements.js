@@ -7,7 +7,7 @@ if (window.location.host == 'localhost:8091'){
 	
 	Dropzone.autoDiscover = false;
     //Dropzone
-    var foto_upload= new Dropzone(".dropzone",{
+    var foto_upload = new Dropzone(".dropzone",{
 		url: base_url+"/dashboard/klien/proses_upload",
         paramName: "userfile",
 		method:"post",
@@ -45,8 +45,35 @@ if (window.location.host == 'localhost:8091'){
 	// Hapus Foto
 	$(document).on('click','.rem-image',function (e) {
 		e.preventDefault();
-
+		// Get token 
+		var token = $(this).attr('data-attr');
+		// Confirm to delete
 		var r = confirm('Ingin menghapus klien ini ?');
-		alert(r);
+		// Cek result confirm
+		if (r) {
+			$.ajax({
+				type:"post",
+				data:{token:token},
+				url: base_url+"/dashboard/klien/remove_foto",
+				cache:false,
+				dataType: 'json',
+				success: function(){
+					alert("Foto terhapus");
+					$.ajax({
+						type: "POST",
+						url: base+"/dashboard/klien/index1", //script php untuk mengecek pesan, didalamnya berupa query select
+						cache: false,
+						dataType: "HTML",
+						success: function(msg){ 
+							$("#aniimated-thumbnials").html(msg);
+						}
+					});
+				},
+				error: function(){
+					alert("Error");
+
+				}
+			});
+		}
 	})
 	

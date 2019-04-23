@@ -46,6 +46,7 @@ if (window.location.host == 'localhost:8091'){
 	$(document).on('click','.rem-image',function (e) {
 		e.preventDefault();
 
-		alert('click');
+		var r = confirm('Ingin menghapus klien ini ?');
+		alert(r);
 	})
 	

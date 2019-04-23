@@ -185,6 +185,12 @@
                             <span>Pengaturan Artikel</span>
                         </a>
                     </li>
+                    <li class="<?php if($this->uri->segment(2)=="portofolio"){echo "active";}?>">
+                        <a href="<?php echo base_url()?>dashboard/portofolio">
+                            <i class="material-icons">book</i>
+                            <span>Pengaturan Portofolio</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -304,6 +310,9 @@
 
     <!-- Bootstrap Core Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/bootstrap/js/bootstrap.js"></script>
+    
+    <!-- CKEditor -->
+    <script src="<?php echo base_url();?>assets/adminbsb/plugins/ckeditor/ckeditor.js"></script>
 
     <!-- Select Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/bootstrap-select/js/bootstrap-select.js"></script>
@@ -361,6 +370,52 @@
 
     <!-- Dropzone Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/dropzone/dropzone.js"></script>
+    <script type="text/javascript">
+        Dropzone.autoDiscover = false;
+        var foto_upload = new Dropzone(".dropzone",{
+            url: "<?php echo base_url('dashboard/portofolio/add') ?>",
+            maxFilesize: 2,
+            parallelUploads: 10,
+            uploadMultiple: true,
+            autoProcessQueue: false, 
+            method:"post",
+            paramName:"userfile",
+            dictInvalidFileType:"Type file ini tidak dizinkan",
+            addRemoveLinks:true,
+            init:   function () {
+
+                        var myDropzone = this;
+
+                        // Update selector to match your button
+                        $("#saveport").click(function (e) {
+                            e.preventDefault();
+                            
+                            if(myDropzone.files.length){
+                                myDropzone.processQueue();
+                            } else {                      
+                                error = 'Lampirkan Bukti galeri portofolio'; 
+                                alert(error)
+                            }                            
+                        });
+
+                        this.on('sending', function(file, xhr, formData) {
+                            // Append all form inputs to the formData Dropzone will POST
+                            var editor = CKEDITOR.instances['editor1'].getData();
+                            var data = $('#frmPort').serializeArray();
+                            formData.append("thumbport",document.getElementById("thumb").files[0]);
+                            formData.append("title",$("#judul").val());
+                            formData.append("e1",editor);
+                        });
+
+                        this.on('success',function (res,xhr) {
+                            location.reload(true);
+                            
+                        });
+                    
+                    }
+            });
+
+        </script>
 	
     <!-- SweetAlert Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/sweetalert/sweetalert.min.js"></script>

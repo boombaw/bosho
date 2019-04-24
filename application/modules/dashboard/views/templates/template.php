@@ -408,7 +408,9 @@
                         });
 
                         this.on('success',function (res,xhr) {
-                            location.reload(true);
+                            // alert(xhr);
+                            var uri = "<?php echo base_url('dashboard/portofolio') ?>";
+                            location.replace(uri);
                             
                         });
                     

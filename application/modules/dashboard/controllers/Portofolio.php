@@ -185,9 +185,26 @@ class Portofolio extends MX_Controller {
 	public function edit($id='')
 	{
 
-		$artikel = $this->model_crud->getDetail('tbl_portofolio','id_portofolio',$id)->result();
-		$data['portofolio'] = reset($artikel);
+		$portofolio = $this->model_crud->getDetail('tbl_portofolio','id_portofolio',$id)->result();
+		$data['portofolio'] = reset($portofolio);
+
+		$thumbport = $this->model_crud->getDetail('tbl_thumbporto','id_pp',$portofolio[0]->id_portofolio)->result();
+		$tport = '';
+		foreach($thumbport as $row){
+			$tport .=	'<center>
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail">
+							<a href="'.base_url().'unggah/portofolio/'.$row->foto.'">
+								<img class="img-responsive thumbnail" src="'.base_url().'unggah/portofolio/'.$row->foto.'" style="max-height:90px;margin-bottom:5px;">
+							</a>
+							<button type="button" class="btn btn-xs bg-red waves-effect waves-light rem-image-port" data-attr="'.$row->foto.'" data-pid = "'.$row->id_pp.'" style="margin-bottom:15px;">Remove Image</button>
+						</div>
+					</div>
+					</center>';
+		} 
+		$data['thumb'] = $tport;
 		$data['page'] = $this->path_portofolio.'v_edit_portofolio';
+		
 		$this->load->view('templates/template',$data);
 	}
 
@@ -195,21 +212,89 @@ class Portofolio extends MX_Controller {
 	{
 		if (@$_POST['asd']) {
 			$id = $_POST['asd'];
-			$results = $this->model_crud->delData('tbl_portofolio','id_portofolio',$id);
+			$results = $this->model_crud->delData($this->table,$this->primary_key,$id);
 
-			if ($results > 0) {
-				echo json_encode(array('results' => 'success','text' => 'Artikel Berhasil di hapus'));
+			if ($results) {
+				$results = $this->model_crud->delData('tbl_thumbporto','id_pp',$id);
+				if ($results) {
+					echo json_encode(array('results' => 'success','text' => 'Portofolio Berhasil di hapus'));
+				}else{
+
+					echo json_encode(array('results' => 'failed', 'text' => 'Portofolio Gagal di hapus'));
+				}
 			}else{
-				echo json_encode(array('results' => 'failed', 'text' => 'Artikel Gagal di hapus'));
+				echo json_encode(array('results' => 'failed', 'text' => 'Portofolio Gagal di hapus'));
 			}
 		}
 	}
 
 	function lihat($id)
 	{
-		$data['portofolio'] = $this->model_crud->getDetail('tbl_portofolio','id_portofolio',$id)->row();
+		$portofolio = $this->model_crud->getDetail($this->table,$this->primary_key,$id)->row();
+		
+		$thumbport = $this->model_crud->getDetail('tbl_thumbporto','id_pp',$portofolio->id_portofolio)->result();
+		$tport = '';
+		foreach($thumbport as $row){
+			$tport .=	'<center>
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail">
+							<a href="'.base_url().'unggah/portofolio/'.$row->foto.'">
+								<img class="img-responsive thumbnail" src="'.base_url().'unggah/portofolio/'.$row->foto.'" style="max-height:90px;margin-bottom:5px;">
+							</a>
+						</div>
+					</div>
+					</center>';
+		} 
+		$data = [
+			'portofolio' => $portofolio,
+			'thumb' => $tport,
+		];
+
 		$this->load->view($this->path_portofolio.'v_detail', $data);
 	}	
 	
+	// Thumbnail Portofolio
+	public function tport(){
+		$portofolio = $this->model_crud->getDetail('tbl_thumbporto','id_pp',$this->input->post('token'));
+
+		$tport = '';
+		foreach($portofolio->result() as $row){
+			$tport .=	'<center>
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<div class="thumbnail">
+							<a href="'.base_url().'unggah/portofolio/'.$row->foto.'">
+								<img class="img-responsive thumbnail" src="'.base_url().'unggah/portofolio/'.$row->foto.'" style="max-height:90px;margin-bottom:5px;">
+							</a>
+							<button type="button" class="btn btn-xs bg-red waves-effect waves-light rem-image-port" data-attr="'.$row->id_pp.'" style="margin-bottom:15px;">Remove Image</button>
+						</div>
+					</div>
+					</center>';
+		} 
+
+		echo $tport;
+	}
+
+	//Untuk menghapus foto thumbnail portofolio
+	function remove_foto_g(){
+
+		//Ambil token foto
+		$token=$this->input->post('token');
+
+		
+		$foto=$this->db->get_where('tbl_thumbporto',array('foto'=>$token));
+
+		if($foto->num_rows()>0){
+			$hasil=$foto->row();
+			$nama_foto=$hasil->foto;
+			if(file_exists($file=FCPATH.'/unggah/portofolio/'.$nama_foto)){
+				unlink($file);
+			}
+			$this->db->delete('tbl_thumbporto',array('foto'=>$token));
+
+		}
+
+
+		echo "{}";
+	}	
 }
 	

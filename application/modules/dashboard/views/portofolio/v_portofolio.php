@@ -1,6 +1,6 @@
 ﻿<script type="text/javascript">
     function attach(id) {
-        $("#detil").load('<?php echo base_url()?>dashboard/artikel/lihat/'+id);
+        $("#detil").load('<?php echo base_url()?>dashboard/portofolio/lihat/'+id);
     }
 </script>  
 <div class="block-header">

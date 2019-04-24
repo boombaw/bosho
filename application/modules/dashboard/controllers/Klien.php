@@ -3,17 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Klien extends MX_Controller {
 	
-public function __construct(){
+
+
+	public function __construct(){
 		parent::__construct();
 		//$this->load->model('model_user');
 	}
 	public function index()
 	{
-		
-		
 		$data['page'] = 'dashboard/klien/v_klien';
-		$this->load->view('templates/template',$data);
-			
+		$this->load->view('templates/template',$data);			
 	}
 	public function index1(){
 		$klien = $this->model_crud->getData('tbl_galeri','id_galeri','desc');

@@ -370,10 +370,64 @@
 
     <!-- Dropzone Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/dropzone/dropzone.js"></script>
+    <!-- A -->
     <script type="text/javascript">
         Dropzone.autoDiscover = false;
-        var foto_upload = new Dropzone(".dropzone",{
-            url: "<?php echo base_url('dashboard/portofolio/add') ?>",
+        if ($('#add_pdropzone').length) {
+            
+            
+            /*Add Portofolio*/
+            var foto_upload = new Dropzone("#add_pdropzone",{
+                url: "<?php echo base_url('dashboard/portofolio/add') ?>",
+                maxFilesize: 2,
+                parallelUploads: 10,
+                uploadMultiple: true,
+                autoProcessQueue: false, 
+                method:"post",
+                paramName:"userfile",
+                dictInvalidFileType:"Type file ini tidak dizinkan",
+                addRemoveLinks:true,
+                init:   function () {
+
+                            var myDropzone = this;
+
+                            // Update selector to match your button
+                            $("#saveport").click(function (e) {
+                                e.preventDefault();
+                                
+                                if(myDropzone.files.length){
+                                    myDropzone.processQueue();
+                                } else {                      
+                                    error = 'Lampirkan Bukti galeri portofolio'; 
+                                    alert(error)
+                                }                            
+                            });
+
+                            this.on('sending', function(file, xhr, formData) {
+                                // Append all form inputs to the formData Dropzone will POST
+                                var editor = CKEDITOR.instances['editor1'].getData();
+                                var data = $('#frmPort').serializeArray();
+                                formData.append("thumbport",document.getElementById("thumb").files[0]);
+                                formData.append("title",$("#judul").val());
+                                formData.append("e1",editor);
+                            });
+
+                            this.on('success',function (res,xhr) {
+                                // alert(xhr);
+                                var uri = "<?php echo base_url('dashboard/portofolio') ?>";
+                                location.replace(uri);
+                                
+                            });
+                        
+                        }
+                });
+        
+        }
+        
+        if ($('#edit_pdropzone').length) {
+            
+            var foto_upload = new Dropzone("div#edit_pdropzone",{
+            url: "<?php echo base_url('dashboard/portofolio/update') ?>",
             maxFilesize: 2,
             parallelUploads: 10,
             uploadMultiple: true,
@@ -387,7 +441,7 @@
                         var myDropzone = this;
 
                         // Update selector to match your button
-                        $("#saveport").click(function (e) {
+                        $("#editport").click(function (e) {
                             e.preventDefault();
                             
                             if(myDropzone.files.length){
@@ -400,11 +454,13 @@
 
                         this.on('sending', function(file, xhr, formData) {
                             // Append all form inputs to the formData Dropzone will POST
-                            var editor = CKEDITOR.instances['editor1'].getData();
-                            var data = $('#frmPort').serializeArray();
+                            var editor = CKEDITOR.instances['editor2'].getData();
+                            var data = $('#formeport').serializeArray();
+                            var id = $('#formeport').attr('eid');
                             formData.append("thumbport",document.getElementById("thumb").files[0]);
                             formData.append("title",$("#judul").val());
                             formData.append("e1",editor);
+                            formData.append("asd",id);
                         });
 
                         this.on('success',function (res,xhr) {
@@ -416,7 +472,8 @@
                     
                     }
             });
-
+        // other code here
+        }
         </script>
 	
     <!-- SweetAlert Plugin Js -->

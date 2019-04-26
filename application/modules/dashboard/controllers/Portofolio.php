@@ -25,7 +25,6 @@ class Portofolio extends MX_Controller {
 	}
 	public function add()
 	{
-
 		$this->load->helper('inflector');
 		$this->load->helper('security');
 		$this->load->library('secure_library');
@@ -107,7 +106,7 @@ class Portofolio extends MX_Controller {
 					}
 				}
 
-				// echo "<script>alert('Sukses');history.go(-1);</script>";
+				echo "<script>alert('Sukses');history.go(-1);</script>";
 
 			} else {
 
@@ -123,18 +122,19 @@ class Portofolio extends MX_Controller {
 
 	public function update()
 	{
+		
 		$this->load->helper('inflector');
 		$this->load->helper('security');
 		$this->load->library('secure_library');
 		$datetime=date('YmdHis');
-		$tem= $_FILES['files']['name'];
+		$tem= $_FILES['thumbport']['name'];
 		$depan= pathinfo($tem,PATHINFO_FILENAME);
 		$depan1= str_replace(' ','_',$depan);
 		$depan2= str_replace('.','_',$depan1);
 		$ext= pathinfo($tem,PATHINFO_EXTENSION);
 		$filename= $depan2.'_'.$datetime.'.'.$ext;
 		
-		$config['upload_path']   = './unggah/artikel/';
+		$config['upload_path']   = './unggah/portofolio/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
 		$config['file_name']     = $filename;
 		$config['max_size']      = '102400';
@@ -142,17 +142,15 @@ class Portofolio extends MX_Controller {
 		$config['max_height']    = '102400';
 
 		$this->load->library('upload', $config);
-		/* echo '<pre>';
-		print_r($filename);exit(); */
-		if (!$this->upload->do_upload('files')) {
+		$id = $this->input->post('asd');
+		if (!$this->upload->do_upload('thumbport')) {
 			echo '<pre>';
 			print_r($this->upload->display_errors());
 			echo '<br><a style="color:blue" onclick="history.go(-1)"> << Kembali </a>'; exit();
 		} else {
-			$id = $this->input->post('asd');
-			$this->secure_library->filter_post($_FILES['files']['name'], 'xss_clean');
-		/* echo '<pre>';
-		print_r($aranfile);exit(); */
+			
+			$this->secure_library->filter_post($_FILES['thumbport']['name'], 'xss_clean');
+		
 			if ($this->secure_library->start_post()) {
 
 				$data = array(
@@ -168,18 +166,47 @@ class Portofolio extends MX_Controller {
 				
 				$this->model_crud->updateData('tbl_portofolio','id_portofolio',$id,$data);
 				
-				echo "<script>alert('Sukses');history.go(-1);</script>";
+				$files=$_FILES['userfile'];
+				$count = count($_FILES['userfile']['name']);
+		
+				for($i=0; $i<$count; $i++){
+					$datetime=date('YmdHis');
+					$urut=$i+1;
+					$sv_name = $datetime.'_('.$urut.')_'.$files['name'][$i];
+					$save_name= str_replace(" ", "_", $sv_name);
+					
+					$_FILES['userfile']['name']= $files['name'][$i];
+					$_FILES['userfile']['type']= $files['type'][$i];
+					$_FILES['userfile']['tmp_name']= $files['tmp_name'][$i];
+					$_FILES['userfile']['error']= $files['error'][$i];
+					$_FILES['userfile']['size']= $files['size'][$i];
+					
+					$config['upload_path']   = './unggah/portofolio/';
+					$config['file_name']      = $save_name;
+					$config['max_size']      = '0';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$this->upload->initialize($config);
+					
+					if($this->upload->do_upload('userfile')){
+						
+						$data = array(
+										'id_pp'		=> $id,
+										'foto'		=> $save_name
+										);
+						
+						$this->model_crud->insertdata('tbl_thumbporto',$data);  		
+					}else{
+						echo "<pre>";
+						print_r($this->upload->display_errors());
+					}
+				}
 
 			} else {
 
 				echo 'Pengunggahan mengalami kendala. Mohon Cek kembali file anda. <a style="color:blue" onclick="history.go(-1)"> << Kembali </a>'; exit();
 
-			}
-			
+			}	
 		}
-		
-		
-		//var_dump($data);exit();
 	}
 
 	public function edit($id='')

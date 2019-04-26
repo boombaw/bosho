@@ -11,18 +11,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
-
-/*$hook['post_controller'] = array(
-
-        'class' => 'ReplaceDB',
-
-        'function' => 'replaceDBName',
-
-        'filename' => 'testHooks.php',
-
-        'filepath' => 'hooks',
-
-        'params' => '',
-
-        );*/

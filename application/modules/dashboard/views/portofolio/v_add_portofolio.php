@@ -39,7 +39,7 @@
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group form-float">
-								<div class="dropzone">
+								<div class="dropzone" id="add_pdropzone">
 									<div class="dz-message">
 										<h3> Klik atau Drop file disini</h3>
 									</div>

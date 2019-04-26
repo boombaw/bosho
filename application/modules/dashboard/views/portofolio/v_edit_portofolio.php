@@ -12,7 +12,7 @@
 				</h2>
 			</div>
 			<div class="body">
-				<form id="form" name="form" class ="form-horizontal" method="post" action="<?php echo base_url()?>dashboard/artikel/update" enctype="multipart/form-data" >
+				<form id="formeport" name="form" class ="form-horizontal" method="post" action="<?php echo base_url()?>dashboard/artikel/update" enctype="multipart/form-data" eid="<?php echo $this->uri->segment(4)?>">
 					<div class="row clearfix js-sweetalert">
 						<div class="col-sm-12">
 							<div class="form-group form-float">
@@ -26,14 +26,14 @@
 						<div class="col-sm-12">
 							<div class="form-group form-float">
 								<div class="form-line">
-									<textarea id="editor1" class="form-control col-md-7 col-xs-12" name="isi" required><?php echo htmlspecialchars($portofolio->isi) ?></textarea>
+									<textarea id="editor2" class="form-control col-md-7 col-xs-12" name="isi" required><?php echo htmlspecialchars($portofolio->isi) ?></textarea>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group form-float">
 								<div class="form-line">
-									<input type="file" id="thumb" name="files" value="<?php echo $portofolio->thumbnail ?>" class="form-control-file" required  >
+									<input type="file" id="thumb" name="files" value="<?php echo $portofolio->thumbnail ?>" class="form-control-file" >
 								</div>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group form-float">
-								<div class="dropzone">
+								<div class="dropzone" id="edit_pdropzone">
 									<div class="dz-message">
 										<h3> Klik atau Drop file disini untuk menambah galery portofolio</h3>
 									</div>
@@ -58,7 +58,7 @@
 						</div>
 						<div class="col-sm-12">
 							<center>
-								<button type="submit" id="edit" class="btn bg-deep-orange waves-effect waves-black btn-lg">Simpan</button>
+								<button type="submit" id="editport" class="btn bg-deep-orange waves-effect waves-black btn-lg">Simpan</button>
 							</center>
 						</div>
 					</div>
@@ -72,10 +72,9 @@
 <!-- Ckeditor -->
 <script src="<?php echo base_url();?>assets/adminbsb/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
-	
 	// Replace the <textarea id="editor1"> with a CKEditor
 	// instance, using default configuration.
-	CKEDITOR.replace( 'editor1' , {
+	CKEDITOR.replace( 'editor2' , {
 		filebrowserBrowseUrl : '<?php echo base_url();?>assets/filemanager/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
 		filebrowserUploadUrl : '<?php echo base_url();?>assets/filemanager/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
 		filebrowserImageBrowseUrl : '<?php echo base_url();?>assets/filemanager/filemanager/dialog.php?type=1&editor=ckeditor&fldr='});

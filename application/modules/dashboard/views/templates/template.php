@@ -191,6 +191,12 @@
                             <span>Pengaturan Portofolio</span>
                         </a>
                     </li>
+                    <li class="<?php if($this->uri->segment(2)=="slider"){echo "active";}?>">
+                        <a href="<?php echo base_url()?>dashboard/slider">
+                            <i class="material-icons">collections</i>
+                            <span>Pengaturan Slider</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

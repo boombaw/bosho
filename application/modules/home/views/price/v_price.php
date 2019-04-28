@@ -9,7 +9,7 @@
       <div class="row">
 		  <?php $i=1; foreach($prices as $row){ ?>
 			<div class="col-md-4 col-sm-4 col-xs-12">
-				<img src="<?php echo base_url();?>unggah/price/<?php echo $i?>/<?php echo $row->image?>">
+				<img style="width:100%" src="<?php echo base_url();?>unggah/price/<?php echo $i?>/<?php echo $row->image?>">
 			</div>
 		  <?php $i++; } ?>
       </div>

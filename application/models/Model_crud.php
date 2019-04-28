@@ -12,14 +12,6 @@ class Model_crud extends CI_Model {
 	{
 		return $this->db->order_by($key, $sort)->get($tbl)->result();
 	}
-	function getDatavideo($tbl,$key,$sort)
-	{
-		return $this->db->where('tipe',2)->order_by($key, $sort)->get($tbl)->result();
-	}
-	function getDatafoto($tbl,$key,$sort)
-	{
-		return $this->db->where('tipe',1)->order_by($key, $sort)->get($tbl)->result();
-	}
 
 	function insertData($tbl,$data)
 	{

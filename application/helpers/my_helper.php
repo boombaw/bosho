@@ -80,7 +80,7 @@
 		$BulanIndo = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
 	 	$split = explode(' ', $date);
 	 	$spli = explode('-', $split[0]);
-		return  $split[1] . ' , ' . $spli[2] . ' ' . $BulanIndo[ (int)$spli[1] ] . ' ' . $spli[0];
+		return  $split[1] . ' / ' . $spli[2] . ' ' . $BulanIndo[ (int)$spli[1] ] . ' ' . $spli[0];
 	}
 
 	function dateRmw($date)

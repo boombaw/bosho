@@ -107,7 +107,6 @@
                                 <ul class="menu">
                                     <?php 
                                         $notif = $this->session->userdata('notif');
-                                        debug($notif);
 
                                     ?>
                                     <?php foreach ($notif as $key => $value): ?>

@@ -456,6 +456,15 @@ $.AdminBSB.browser = {
 //==========================================================================================================================
 
 $(function () {
+    var skin = '';
+    var theme = $('.right-sidebar .demo-choose-skin li');
+    skin =  window.localStorage.getItem('skin', theme.data('theme'));
+    if (skin !== '' || skin != undefined) {
+        $("#body").removeClass(function() {
+          $( this ).attr( "class" ) 
+        });
+        $("#body").addClass("theme-"+skin);
+    }
     $.AdminBSB.browser.activate();
     $.AdminBSB.leftSideBar.activate();
     $.AdminBSB.rightSideBar.activate();

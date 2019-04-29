@@ -88,6 +88,9 @@
 				var badColor = "#ff0000";
 				$('#msgnm').hide();
 				document.getElementById('edit').disabled = true;
+				window.localStorage.setItem('username', $("#username").val());
+				var username  = window.localStorage.getItem('username');
+
 				$("#edit").click(function() {
 				    if ($('#nama').val() == null || $('#nama').val() == "") {
 				        e.preventDefault();
@@ -120,27 +123,31 @@
 				        $('#msg').show();
 				        $("#msg").html("Username harus diisi").css("color", "red");
 				    } else {
-				        $.ajax({
-				            type: "POST",
-				            url: "<?php echo base_url()?>dashboard/user/cari/",
-				            data: $('#form').serialize(),
-				            dataType: "HTML",
-				            cache: false,
-				            success: function(msg) {
-				                $('#msg').show();
-				                $("#msg").html(msg);
-				                if (alert2.value == 1 && alert.value == 1) {
-				                    document.getElementById('edit').disabled = false;
-				                } else {
-				                    document.getElementById('edit').disabled = true;
-				                }
+				        if ($(this).val() !== username) {
+				        	$.ajax({
+					            type: "POST",
+					            url: "<?php echo base_url()?>dashboard/user/cari/",
+					            data: $('#form').serialize(),
+					            dataType: "HTML",
+					            cache: false,
+					            success: function(msg) {
+					                $('#msg').show();
+					                $("#msg").html(msg);
+					                if (alert2.value == 1 && alert.value == 1) {
+					                    document.getElementById('edit').disabled = false;
+					                } else {
+					                    document.getElementById('edit').disabled = true;
+					                }
 
-				            },
-				            error: function(jqXHR, textStatus, errorThrown) {
-				                $('#msg').show();
-				                $("#msg").html(textStatus + " " + errorThrown);
-				            }
-				        });
+					            },
+					            error: function(jqXHR, textStatus, errorThrown) {
+					                $('#msg').show();
+					                $("#msg").html(textStatus + " " + errorThrown);
+					            }
+					        });
+				        }else{
+		                    document.getElementById('edit').disabled = false;
+				        }
 				    }
 				});
 

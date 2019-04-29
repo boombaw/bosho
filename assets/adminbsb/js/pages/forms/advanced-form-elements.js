@@ -1,10 +1,4 @@
-	if (window.location.host == 'localhost:8091'){
-		var get_url = window.location;
-		var base_url = get_url.protocol+'//'+get_url.host+'/bosho';
-	} else {
-		var base_url = window.location.origin;
-	}
-	
+
 	Dropzone.autoDiscover = false;
 	if ($('#DropzoneElementId').length) {
 		

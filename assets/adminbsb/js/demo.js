@@ -20,6 +20,8 @@ function skinChanger() {
         $body.removeClass('theme-' + existTheme);
         $this.addClass('active');
 
+        window.localStorage.setItem('skin', $this.data('theme'));
+
         $body.addClass('theme-' + $this.data('theme'));
     });
 }

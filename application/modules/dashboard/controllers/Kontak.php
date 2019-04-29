@@ -9,8 +9,11 @@ public function __construct(){
 	}
 	public function index()
 	{
-		$data['kontak']=$this->model_crud->getData('tbl_kontak','id_kontak','desc');
-		$data['page'] = 'dashboard/kontak/v_kontak';
+		$kontak            = $this->model_crud->getData('tbl_kontak','id_kontak','desc');
+		$jmlKontak         = count($kontak);
+		$data['kontak']    = $kontak;
+		$data['jmlKontak'] = $jmlKontak;
+		$data['page']      = 'dashboard/kontak/v_kontak';
 		$this->load->view('templates/template',$data);
 			
 	}
@@ -37,7 +40,7 @@ public function __construct(){
 	public function edit($id)
 	{
 		if (@$id) {
-			$arrUser = $this->model_crud->getDetail('tbl_kontak','id_kontak',$id)->result();
+			$arrUser      = $this->model_crud->getDetail('tbl_kontak','id_kontak',$id)->result();
 			$data['user'] = reset($arrUser);
 			$data['page'] = 'dashboard/kontak/v_edit_kontak';
 			$this->load->view('templates/template',$data);

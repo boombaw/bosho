@@ -13,7 +13,9 @@
 				</h2>
 				<ul class="header-dropdown m-r--1">
 					<li>
-					<a class="btn bg-light-blue waves-effect waves-black btn-lg"  data-toggle="tooltip" data-placement="left" data-original-title="Tambah Kontak" href="<?php echo base_url('dashboard/kontak/tambah/') ?>"><i class="material-icons">contacts</i><span>Tambah kontak</span></a>
+						<?php if($jmlKontak == 0 ): ?>
+							<a class="btn bg-light-blue waves-effect waves-black btn-lg"  data-toggle="tooltip" data-placement="left" data-original-title="Tambah Kontak" href="<?php echo base_url('dashboard/kontak/tambah/') ?>"><i class="material-icons">contacts</i><span>Tambah kontak</span></a>
+						<?php endif?>
 					</li>
 				</ul>
 			</div>

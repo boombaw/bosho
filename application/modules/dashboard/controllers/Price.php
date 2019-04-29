@@ -73,7 +73,7 @@ public function __construct(){
 					'image' 		=> xss_clean($filename)
 				);
 				
-				$row = $this->db->where('id_price',1)->get('tbl_price')->row();
+				$row = $this->db->where('id_price',$penentu)->get('tbl_price')->row();
 				
 					unlink('./unggah/price/'.$penentu.'/'.$row->image);
 					

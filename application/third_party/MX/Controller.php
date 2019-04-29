@@ -44,6 +44,16 @@ class MX_Controller
 	{
 		date_default_timezone_set('Asia/jakarta');
 		$this->load->model('model_crud');
+
+		// Get Nofifikasi
+		$notif = $this->db->query('SELECT * FROM tbl_form ORDER BY id_form DESC LIMIT 6,0')->result();
+		
+		$array = array(
+			'notif' => $notif
+		);
+		
+		$this->session->set_userdata( $array );
+
 		$class = str_replace(CI::$APP->config->item('controller_suffix'), '', get_class($this));
 		log_message('debug', $class." MX_Controller Initialized");
 		Modules::$registry[strtolower($class)] = $this;	

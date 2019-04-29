@@ -63,7 +63,7 @@
 <body class="theme-red" id="body">
 
     <!-- Page Loader -->
-    <div class="page-loader-wrapper">
+    <!-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-red">
@@ -77,7 +77,7 @@
             </div>
             <p>Please wait...</p>
         </div>
-    </div>
+    </div> -->
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
@@ -95,6 +95,59 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                     <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">7</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <?php 
+                                        $notif = $this->session->userdata('notif');
+                                        debug($notif);
+
+                                    ?>
+                                    <?php foreach ($notif as $key => $value): ?>
+                                       
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <div class="icon-circle bg-blue-grey">
+                                                    <i class="material-icons">comment</i>
+                                                </div>
+                                                <div class="menu-info">
+                                                    <h4><b><?php echo $value->jdl_form ?></b> commented your post</h4>
+                                                    <p>
+                                                        <i class="material-icons">access_time</i> 4 hours ago
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    <?php endforeach ?>
+                                   
+                                    <!-- <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li> -->
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="<?php echo site_url('dashboard/notif') ?>">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
                 </ul>
             </div>
         </div>

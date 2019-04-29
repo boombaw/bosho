@@ -27,9 +27,6 @@ class Auth extends MX_Controller {
 				$this->session->set_userdata('username',$valid_user->username);
 				$this->session->set_userdata('email',$valid_user->email);				
 				$this->session->set_userdata( 'is_login',true);
-				// $this->session->set_userdata('foto',$valid_user->foto);
-				// $this->session->set_userdata('kd_level',$valid_user->kd_level);
-				// redirect(base_url());\
 				echo json_encode(['result' => 'ok','uri' => 'dashboard']);
 			}
 		}else{

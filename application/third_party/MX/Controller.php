@@ -46,14 +46,19 @@ class MX_Controller
 		$this->load->model('model_crud');
 
 		// Get Nofifikasi
-		$notif = $this->db->query('SELECT * FROM tbl_form ORDER BY id_form DESC LIMIT 6,0')->result();
-		
+		$notif = $this->db->query('SELECT * FROM tbl_form ORDER BY id_form DESC LIMIT 0,6')->result();
+		/*
+		0 => terbaca
+		1 => belum terbaca
+		*/
+		$notif_unread = $this->db->query('SELECT * FROM tbl_form WHERE `read` = 0')->num_rows();
+
 		$array = array(
-			'notif' => $notif
+			'notif' => $notif,
+			'notif_unread' => $notif_unread
 		);
 		
 		$this->session->set_userdata( $array );
-
 		$class = str_replace(CI::$APP->config->item('controller_suffix'), '', get_class($this));
 		log_message('debug', $class." MX_Controller Initialized");
 		Modules::$registry[strtolower($class)] = $this;	

@@ -15,9 +15,9 @@
 								<th>No.</th>
 								<th>Form</th>
 								<th>Judul</th>
-								<th>Alamat</th>
+								<th>Deskripsi</th>
 								<th>E-Mail</th>
-								<th>Telepon</th>
+								<th>Waktu</th>
 								<th>Status</th>
 							</tr>
 						</thead>
@@ -25,7 +25,11 @@
 						<?php $i=1; foreach($all_notif as $row){?>
 							<tr>
 								<td><?php echo $i ?></td>
-								<td><?php echo $row->nama_form ?></td>
+								<td>
+									<a href="<?php echo site_url('dashboard/notif/detail/'.$row->id_form) ?>">
+										<?php echo $row->nama_form ?>
+									</a>
+								</td>
 								<td><?php echo $row->jdl_form ?></td>
 								<td><?php echo $row->desc_form ?></td>
 								<td><?php echo $row->email_form ?></td>

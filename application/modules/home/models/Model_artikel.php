@@ -6,6 +6,10 @@ class Model_artikel extends CI_Model {
 	{
 		return $this->db->order_by($key, $sort)->limit(6)->get($tbl)->result();
 	}
+	function getartikel2($tbl,$key,$sort)
+	{
+		return $this->db->order_by($key, $sort)->limit(3)->get($tbl)->result();
+	}
 
 
 }

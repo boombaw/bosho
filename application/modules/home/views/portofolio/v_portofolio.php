@@ -2,7 +2,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>Our Portfolio</h2>
+            <h2>Bagaimana Hasil Kerja Kami?</h2>
           </div>
         </div>
       </div>
@@ -49,6 +49,5 @@
 		  <?php }?>
           <!-- single-awesome-project end -->
         </div>
-		<a href="<?php echo base_url(); ?>home/portofolio" class="pull-right">Lihat Lainnya
-		</a>
+		<a href="<?php echo base_url(); ?>home/portofolio" class="pull-right">Lihat Lainnya</a>
       </div>

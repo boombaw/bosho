@@ -9,28 +9,33 @@ public function __construct(){
 	}
 	public function index()
 	{
+		$login = $this->session->userdata('is_login');
+		if ($login) {
+			$s1=$this->model_crud->getDetail('tbl_price','id_price',1)->row();
+			$s2=$this->model_crud->getDetail('tbl_price','id_price',2)->row();
+			$s3=$this->model_crud->getDetail('tbl_price','id_price',3)->row();
+			if(!empty($s1)){
+				$data['price1'] = $s1->image;
+			}else{
+				$data['price1'] = '';
+			}
+			if(!empty($s2)){
+				$data['price2'] = $s2->image;
+			}else{
+				$data['price2'] = '';
+			}
+			if(!empty($s3)){
+				$data['price3'] = $s3->image;
+			}else{
+				$data['price3'] = '';
+			}
+			$data['page'] = 'dashboard/price/v_price';
+			$this->load->view('templates/template',$data);
+		}else{
+			redirect(base_url('login'),'refresh');
+		}	
 		
 		
-		$s1=$this->model_crud->getDetail('tbl_price','id_price',1)->row();
-		$s2=$this->model_crud->getDetail('tbl_price','id_price',2)->row();
-		$s3=$this->model_crud->getDetail('tbl_price','id_price',3)->row();
-		if(!empty($s1)){
-			$data['price1'] = $s1->image;
-		}else{
-			$data['price1'] = '';
-		}
-		if(!empty($s2)){
-			$data['price2'] = $s2->image;
-		}else{
-			$data['price2'] = '';
-		}
-		if(!empty($s3)){
-			$data['price3'] = $s3->image;
-		}else{
-			$data['price3'] = '';
-		}
-		$data['page'] = 'dashboard/price/v_price';
-		$this->load->view('templates/template',$data);
 	}
 	public function imgs()
 	{

@@ -20,7 +20,7 @@ class Auth extends MX_Controller {
 			{
 				$this->session->set_flashdata('error','Wrong Username/Password!');
 				// redirect('login');
-				echo json_encode(['result' => 'failed']);
+				echo json_encode(['result' => 'failed','text' => 'Username or Password Incorrect']);
 			} else {
 				$this->session->set_userdata('id_pengguna',$valid_user->id_pengguna);
 				$this->session->set_userdata('nama',$valid_user->nama);

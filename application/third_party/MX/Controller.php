@@ -51,7 +51,7 @@ class MX_Controller
 		0 => terbaca
 		1 => belum terbaca
 		*/
-		$notif_unread = $this->db->query('SELECT * FROM tbl_form WHERE `read` = 0')->num_rows();
+		$notif_unread = $this->db->query('SELECT * FROM tbl_form WHERE `read` = 1')->num_rows();
 
 		$array = array(
 			'notif' => $notif,
@@ -81,5 +81,14 @@ class MX_Controller
 	public function __get($class) 
 	{
 		return CI::$APP->$class;
+	}
+
+	public function is_login()
+	{
+		$login = $this->session->userdata('logged_in');
+		if ($login) {
+			return true;
+		} 
+		return false;
 	}
 }

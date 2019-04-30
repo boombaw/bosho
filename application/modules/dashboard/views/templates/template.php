@@ -55,7 +55,9 @@
 	
     <!-- adminbsb Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo base_url(); ?>assets/adminbsb/css/themes/all-themes.css" rel="stylesheet" />
-	
+	<script>
+      var base_url = '<?php echo base_url(); ?>';  
+    </script>
     <!-- Jquery Core Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/jquery/jquery.min.js"></script>
 </head>
@@ -105,14 +107,11 @@
                             <li class="header">NOTIFICATIONS</li>
                             <li class="body">
                                 <ul class="menu">
-                                    <?php 
-                                        $notif = $this->session->userdata('notif');
-
-                                    ?>
+                                    <?php $notif = $this->session->userdata('notif');?>
                                     <?php foreach ($notif as $key => $value): ?>
                                         <?php if ($value->read == 0): ?>
                                             <li>
-                                                <a href="javascript:void(0);">
+                                                <a href="<?php echo site_url('dashboard/notif/detail/'.$value->id_form) ?>" class="notif-detail" data-attr="<?php echo $value->id_form ?>" >
                                                     <div class="icon-circle bg-blue-grey">
                                                         <i class="material-icons">comment</i>
                                                     </div>
@@ -126,7 +125,7 @@
                                             </li>
                                         <?php else: ?>
                                              <li>
-                                                <a href="javascript:void(0);">
+                                                <a href="<?php echo site_url('dashboard/notif/detail/'.$value->id_form) ?>" class="notif-detail" data-attr="<?php echo $value->id_form ?>">
                                                     <div class="icon-circle bg-cyan">
                                                         <i class="material-icons">comment</i>
                                                     </div>
@@ -167,12 +166,6 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="separator" class="divider"></li>
                             <li><a href="<?php echo site_url('logout') ?>"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>

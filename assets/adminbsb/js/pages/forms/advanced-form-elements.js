@@ -74,4 +74,15 @@
 			});
 		}
 	})
+
+	// Update Notif Read Status
+	$('.notif-detail').click(function (e) {
+		
+		var id = $(this).attr('data-attr');
+		$.ajax({
+			url: base_url + "dashboard/notif/update",
+            type: "POST",
+            data: {id:id},
+        });
+	})
 	

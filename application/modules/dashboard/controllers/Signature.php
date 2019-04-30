@@ -5,10 +5,14 @@ class Signature extends MX_Controller {
 
 	public function index()
 	{
-		$data['company']=$this->model_crud->getDetail('tbl_signature','id_c',1)->row_array();
-		$data['page'] = 'dashboard/signature/v_signature';
-		$this->load->view('templates/template',$data);
-			
+		$login = $this->session->userdata('is_login');
+		if ($login()) {
+			$data['company']=$this->model_crud->getDetail('tbl_signature','id_c',1)->row_array();
+			$data['page'] = 'dashboard/signature/v_signature';
+			$this->load->view('templates/template',$data);
+		}else{
+			redirect(base_url('login'),'refresh');
+		}			
 	}
 	public function edit()
 	{

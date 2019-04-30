@@ -26,7 +26,7 @@
 							<tr>
 								<td><?php echo $i ?></td>
 								<td>
-									<a href="<?php echo site_url('dashboard/notif/detail/'.$row->id_form) ?>">
+									<a href="<?php echo site_url('dashboard/notif/detail/'.$row->id_form) ?>" class="notif-detail">
 										<?php echo $row->nama_form ?>
 									</a>
 								</td>
@@ -50,30 +50,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	
-	$(document).on('click','.del-kontak', function (e) {
-		e.preventDefault();
-        var id = $(this).attr('name')
-
-        var r = confirm("Hapus kontak ini ?");
-        
-        if (r) {
-	       	$.ajax({
-
-	            url: "<?php echo base_url(); ?>dashboard/kontak/delete",
-	            type: "POST",
-	            data: {asd:id},
-	            success: function(data) {
-	            	var res = JSON.parse(data);
-	                alert(res.text);
-	            	if (res.results == 'success') {
-	            		location.reload(true);
-	            	}
-	            }
-	        });
-        }
-	});
-</script>
-

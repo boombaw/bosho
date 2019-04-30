@@ -18,7 +18,6 @@ $(function () {
 
        if ($(this).valid()) {
             $.ajax({
-
                 url: "login",
                 type: "POST",
                 data: $("#sign_in").serializeArray(),
@@ -26,6 +25,8 @@ $(function () {
                     var response = JSON.parse(data);
                     if (response.result == "ok") {
                         location.replace(response.uri);
+                    }else{
+                        alert(response.text);
                     }
                 }
             });

@@ -9,15 +9,26 @@ public function __construct(){
 	}
 	public function index()
 	{
-		$data['artikel']=$this->model_crud->getData('tbl_artikel','id_artikel','desc');
-		$data['page'] = 'dashboard/artikel/v_artikel';
-		$this->load->view('templates/template',$data);
+		$login = $this->session->userdata('is_login');
+		if ($login) {
+			$data['artikel']=$this->model_crud->getData('tbl_artikel','id_artikel','desc');
+			$data['page'] = 'dashboard/artikel/v_artikel';
+			$this->load->view('templates/template',$data);
+		}else{
+			redirect(base_url('login'),'refresh');
+		}
 			
 	}
 	public function tambah()
 	{
-		$data['page'] = 'dashboard/artikel/v_add_artikel';
-		$this->load->view('templates/template',$data);
+		$login = $this->session->userdata('is_login');
+		if ($login) {
+			$data['page'] = 'dashboard/artikel/v_add_artikel';
+			$this->load->view('templates/template',$data);
+		}else{
+			redirect(base_url('login'),'refresh');
+		}
+		
 	}
 	public function add()
 	{
@@ -143,11 +154,15 @@ public function __construct(){
 
 	public function edit($id='')
 	{
-
-		$artikel = $this->model_crud->getDetail('tbl_artikel','id_artikel',$id)->result();
-		$data['artikel'] = reset($artikel);
-		$data['page'] = 'dashboard/artikel/v_edit_artikel';
-		$this->load->view('templates/template',$data);
+		$login = $this->session->userdata('is_login');
+		if ($login) {
+			$artikel = $this->model_crud->getDetail('tbl_artikel','id_artikel',$id)->result();
+			$data['artikel'] = reset($artikel);
+			$data['page'] = 'dashboard/artikel/v_edit_artikel';
+			$this->load->view('templates/template',$data);
+		}else{
+			redirect(base_url('login'),'refresh');
+		}
 	}
 
 	public function delete($value='')

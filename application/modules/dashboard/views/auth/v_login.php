@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <?php $web=$this->session->userdata('company'); ?>
+
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Sign In | UI</title>
@@ -27,6 +29,10 @@
 
 <body class="login-page">
     <div class="login-box">
+        <div class="logo">
+            <a href="javascript:void(0);"><?php echo $web['nama_company']; ?></b></a>
+            <small>Login Page</small>
+        </div>
         <div class="card">
             <div class="body">
                 <form id="sign_in" method="POST" action="">
@@ -50,11 +56,6 @@
                     <div class="row">
                         <div class="col-xs-4 pull-right">
                             <button class="btn btn-block bg-pink waves-effect" type="submit" id="submit">SIGN IN</button>
-                        </div>
-                    </div>
-                    <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6 pull-right">
-                            <a href="forgot-password.html">Forgot Password?</a>
                         </div>
                     </div>
                 </form>

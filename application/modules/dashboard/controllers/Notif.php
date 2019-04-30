@@ -3,83 +3,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Notif extends MX_Controller {
 	
-public function __construct(){
+	public $table = 'tbl_form';
+	public $primary_key = 'id_form';
+
+	public function __construct(){
 		parent::__construct();
 		//$this->load->model('model_user');
 	}
 	public function index()
 	{
-		$kontak            = $this->model_crud->getData('tbl_form','id_form','desc');
-		$data['all_notif']    = $kontak;
+		$notif            = $this->model_crud->getData($this->table,$this->primary_key,'desc');
+		$data['all_notif']    = $notif;
 		$data['page']      = 'dashboard/notif/v_notif';
-		$this->load->view('templates/template',$data);
-			
-	}
-	public function tambah()
-	{
-		$data['page'] = 'dashboard/kontak/v_add_kontak';
-		$this->load->view('templates/template',$data);
-			
-	}
-	public function add()
-	{
-		
-		$data = array(
-			'jdl_alamat'	=> $this->input->post('judul'),
-			'alamat'		=> $this->input->post('alamat'),
-			'email_ktk'		=> $this->input->post('email'),
-			'tlp_ktk'		=> $this->input->post('tlp')
-		);
-		
-		//var_dump($data);exit();
-		$this->model_crud->insertdata('tbl_kontak',$data);
+		$this->load->view('templates/template',$data);		
 	}
 
-	public function edit($id)
+	public function detail($id = NULL)
 	{
-		if (@$id) {
-			$arrUser      = $this->model_crud->getDetail('tbl_kontak','id_kontak',$id)->result();
-			$data['user'] = reset($arrUser);
-			$data['page'] = 'dashboard/kontak/v_edit_kontak';
-			$this->load->view('templates/template',$data);
+		if (!is_null($id)) {
+			$message = $this->model_crud->getDetail($this->table, $this->primary_key, $id)->result();
+			$data['detail_notif']    = $message;
+			$data['page']      = 'dashboard/notif/v_detail';
+			$this->load->view('templates/template',$data);	
+		}else{
+			echo '<a style="color:blue" onclick="history.go(-1)"> << Kembali </a>'; exit();
 		}
 	}
 
 	public function update()
 	{
-		// Primary Key
-		$id = $_POST['asd'];
+		$id = $_POST['id'];
 
-		$dataUpdate = [
-			'jdl_alamat' => $_POST['judul'],
-			'email_ktk'  => $_POST['email'],
-			'alamat'     => $_POST['alamat'],
-			'tlp_ktk'    => $_POST['tlp'],
+		$data = [
+			'read' => '0'
 		];
 
-		$result = $this->model_crud->updateData('tbl_kontak','id_kontak',$id,$dataUpdate);
-
-		$result = $this->db->affected_rows();
-
-		if ($result) {
-			return true;
-		}
-
-		return false;
-	}
-
-	public function delete()
-	{
-		if (@$_POST['asd']) {
-			$id = $_POST['asd'];
-			$results = $this->model_crud->delData('tbl_kontak','id_kontak',$id);
-
-			if ($results > 0) {
-				echo json_encode(array('results' => 'success','text' => 'Kontak Berhasil di hapus'));
-			}else{
-				echo json_encode(array('results' => 'failed', 'text' => 'Kontak Gagal di hapus'));
-			}
-		}
+		$res = $this->model_crud->updateData($this->table,$this->primary_key,$id,$data);
 	}
 	
 }

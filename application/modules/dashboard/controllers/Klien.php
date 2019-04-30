@@ -11,8 +11,14 @@ class Klien extends MX_Controller {
 	}
 	public function index()
 	{
-		$data['page'] = 'dashboard/klien/v_klien';
-		$this->load->view('templates/template',$data);			
+		$login = $this->session->userdata('is_login');
+
+		if ($login) {
+			$data['page'] = 'dashboard/klien/v_klien';
+			$this->load->view('templates/template',$data);			
+		}else{
+			redirect(base_url('login'),'refresh');
+		}	
 	}
 	public function index1(){
 		$klien = $this->model_crud->getData('tbl_galeri','id_galeri','desc');

@@ -9,9 +9,9 @@ class Dashboard extends MX_Controller {
 		
 	}
 	public function index()
-	{		
-		$is_login = $this->session->userdata('is_login');
-		if ($is_login) {
+	{	
+		$login = $this->session->userdata('is_login');
+		if ($login) {
 			$data['page'] = 'dashboard/depan/v_dashboard';
 			$this->load->view('templates/template',$data);
 		}else{

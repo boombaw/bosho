@@ -79,7 +79,7 @@
                     <a class="page-scroll" href="#beranda">Beranda</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#tentang">Tentang Kami</a>
+                    <a class="page-scroll" href="#tentang">Tentang</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#services">Services</a>
@@ -98,6 +98,9 @@
                   </li>
                   <li>
                     <a class="page-scroll" href="#artikel">Artikel</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#testimonial">Testimonial</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#kontak">Kontak</a>
@@ -443,18 +446,19 @@
   </div>
   <!-- End Blog -->
   <!-- Start Suscrive Area -->
-  <div class="suscribe-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
-          <div class="suscribe-text text-center">
-            <h3>Welcome to our eBusiness company</h3>
-            <a class="sus-btn" href="#">Get A quate</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div id="testimonial" class="pricing-area area-padding">
+		<div class="suscribe-area">
+			<div class="container">
+			  <div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+				  <div class="suscribe-text text-center">
+					<?php echo $this->load->view($testimonial) ?>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	</div>
   <!-- End Suscrive Area -->
   <!-- Start contact Area -->
 <div id="kontak" class="contact-area">

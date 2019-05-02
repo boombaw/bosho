@@ -7,6 +7,7 @@ class Home extends MX_Controller {
 	{
 		$this->load->model('model_portofolio');
 		$this->load->model('model_artikel');
+		$data['testimonial'] = 'home/testimonial/v_testimonial';
 		$data['contacts'] = $this->model_crud->getData('tbl_kontak','id_kontak','desc');
 		$data['contact'] = 'home/kontak/v_kontak';
 		$data['artikels'] = $this->model_artikel->getartikel2('tbl_artikel','id_artikel','desc');

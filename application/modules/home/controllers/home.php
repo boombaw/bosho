@@ -18,6 +18,7 @@ class Home extends MX_Controller {
 		$data['client'] = 'home/client/v_client';
 		$data['prices'] = $this->model_crud->getData('tbl_price','id_price','asc');
 		$data['price'] = 'home/price/v_price';
+		$data['slide'] = $this->model_crud->getData('tbl_slider','id_slider','asc');
 		$data['faqs'] = $this->model_crud->getData('tbl_faq','id_faq','desc');
 		$data['faq'] = 'home/faq/v_faq';
 		$data['signature'] = $this->model_crud->getDetail('tbl_signature','id_c',1)->row();

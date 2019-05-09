@@ -18,7 +18,7 @@
                 <a href="#"><img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $row->thumbnail?>" alt="" /></a>
                 <div class="add-actions text-center">
                   <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="<?php echo base_url(); ?>unggah/portofolio/<?php echo $row->thumbnail?>">
+                    <a href="<?php echo base_url(); ?>home/portofolio/detail/<?php echo $row->id_portofolio?>">
                       <h4><?php echo $row->judul?></h4>
                       <span><?php echo substr($row->isi,0,15)?>...</span>
                     </a>

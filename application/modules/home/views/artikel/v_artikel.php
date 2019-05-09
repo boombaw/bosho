@@ -10,7 +10,7 @@
 	<div class="col-md-4 col-sm-4 col-xs-12">
 		<div class="single-blog">
 			<div class="single-blog-img">
-				<a href="<?php echo base_url(); ?>assets/ebusiness/blog.html">
+				<a href="<?php echo base_url(); ?>home/artikel/detail/<?php echo $row->id_artikel?>">
 					<img style="height:300px;width:auto;" src="<?php echo base_url(); ?>unggah/artikel/<?php echo $row->thumbnail?>" alt="">
 				</a>
 			</div>
@@ -21,14 +21,14 @@
 			</div>
 			<div class="blog-text" style="height:200px;">
 				<h4>
-					<a href="<?php echo base_url(); ?>assets/ebusiness/blog.html"><?php echo $row->judul ?></a>
+					<a href="<?php echo base_url(); ?>home/artikel/detail/<?php echo $row->id_artikel?>"><?php echo $row->judul ?></a>
 				</h4>
 				<p>
 				  <?php echo substr($row->isi,0,200) ?>...
 				</p>
 			</div>
 			<span>
-				<a href="<?php echo base_url(); ?>assets/ebusiness/blog.html" class="ready-btn">Read more</a>
+				<a href="<?php echo base_url(); ?>home/artikel/detail/<?php echo $row->id_artikel?>" class="ready-btn">Read more</a>
 			</span>
 		</div>
 	</div>

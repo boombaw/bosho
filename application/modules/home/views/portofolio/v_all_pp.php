@@ -5,7 +5,7 @@
 			<div class="single-blog">
 			<?php foreach($portofolios as $row){?>
 				<div class="single-blog-img">
-					<a href="<?php echo base_url(); ?>home/portofolio/detail">
+					<a href="<?php echo base_url(); ?>home/portofolio/detail/<?php echo $row->id_portofolio?>">
 						<img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $row->thumbnail?>" alt="">
 					</a>
 				</div>
@@ -16,28 +16,18 @@
 				</div>
 				<div class="blog-text">
 					<h4>
-						<a href="<?php echo base_url(); ?>home/portofolio/detail"><?php echo $row->judul?></a>
+						<a href="<?php echo base_url(); ?>home/portofolio/detail/<?php echo $row->id_portofolio?>"><?php echo $row->judul?></a>
 					</h4>
 					<p>
 						<?php echo substr($row->isi,0,50)?>
 					</p>
 				</div>
 				<span>
-					<a href="<?php echo base_url(); ?>home/portofolio/detail" class="ready-btn">Read more</a>
+					<a href="<?php echo base_url(); ?>home/portofolio/detail/<?php echo $row->id_portofolio?>" class="ready-btn">Read more</a>
 				</span>
 				<hr>
 			<?php }?>
 			</div>
-		</div>
-		<!-- End single blog -->
-		<div class="blog-pagination">
-			<ul class="pagination">
-				<li><a href="#">&lt;</a></li>
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">&gt;</a></li>
-			</ul>
 		</div>
 	</div>
 </div>

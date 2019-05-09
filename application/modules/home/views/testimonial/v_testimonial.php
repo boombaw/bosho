@@ -1,7 +1,7 @@
   <!-- start pricing area -->
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="text-center">
-            <h2 style="color:white;" >Testimonial</h2><br>
+            <h2 style="color:white;" >Apa Kata Mereka?</h2><br>
           </div>
         </div>
       <div class="row">

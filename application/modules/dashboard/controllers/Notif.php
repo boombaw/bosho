@@ -20,7 +20,7 @@ class Notif extends MX_Controller {
 
 	public function detail($id = NULL)
 	{
-		if (!is_null($id)) {
+		if (@$id) {
 			$message = $this->model_crud->getDetail($this->table, $this->primary_key, $id)->result();
 			$data['detail_notif']    = $message;
 			$data['page']      = 'dashboard/notif/v_detail';

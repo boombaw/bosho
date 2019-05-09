@@ -12,37 +12,32 @@ class Slider extends MX_Controller {
 	}
 	public function index()
 	{
-		$login = $this->session->userdata('is_login');
-		if ($login) {
-			$s1=$this->model_crud->getDetail($this->table,$this->primary_key,1)->row();
-			$s2=$this->model_crud->getDetail($this->table,$this->primary_key,2)->row();
-			$s3=$this->model_crud->getDetail($this->table,$this->primary_key,3)->row();
-			if(!empty($s1)){
-				$data['slider1'] = $s1->image;
-				$data['caption1'] = $s1->caption;
-			}else{
-				$data['slider1'] = '';
-				$data['caption1'] = '';
-			}
-			if(!empty($s2)){
-				$data['slider2'] = $s2->image;
-				$data['caption2'] = $s2->caption;
-			}else{
-				$data['slider2'] = '';
-				$data['caption2'] = '';
-			}
-			if(!empty($s3)){
-				$data['slider3'] = $s3->image;
-				$data['caption3'] = $s3->caption;
-			}else{
-				$data['slider3'] = '';
-				$data['caption3'] = '';
-			}
-			$data['page'] = 'dashboard/slider/v_slider';
-			$this->load->view('templates/template',$data);
+		$s1=$this->model_crud->getDetail($this->table,$this->primary_key,1)->row();
+		$s2=$this->model_crud->getDetail($this->table,$this->primary_key,2)->row();
+		$s3=$this->model_crud->getDetail($this->table,$this->primary_key,3)->row();
+		if(!empty($s1)){
+			$data['slider1'] = $s1->image;
+			$data['caption1'] = $s1->caption;
 		}else{
-			redirect(base_url('login'),'refresh');
+			$data['slider1'] = '';
+			$data['caption1'] = '';
 		}
+		if(!empty($s2)){
+			$data['slider2'] = $s2->image;
+			$data['caption2'] = $s2->caption;
+		}else{
+			$data['slider2'] = '';
+			$data['caption2'] = '';
+		}
+		if(!empty($s3)){
+			$data['slider3'] = $s3->image;
+			$data['caption3'] = $s3->caption;
+		}else{
+			$data['slider3'] = '';
+			$data['caption3'] = '';
+		}
+		$data['page'] = 'dashboard/slider/v_slider';
+		$this->load->view('templates/template',$data);
 	}
 	public function imgs()
 	{

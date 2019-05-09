@@ -43,6 +43,11 @@ class MX_Controller
 	public function __construct() 
 	{
 		date_default_timezone_set('Asia/jakarta');
+
+		if (!$this->session->userdata('is_login')) {
+			redirect(base_url('login'));
+		}
+		
 		$this->load->model('model_crud');
 
 		// Get Nofifikasi
@@ -81,14 +86,5 @@ class MX_Controller
 	public function __get($class) 
 	{
 		return CI::$APP->$class;
-	}
-
-	public function is_login()
-	{
-		$login = $this->session->userdata('logged_in');
-		if ($login) {
-			return true;
-		} 
-		return false;
 	}
 }

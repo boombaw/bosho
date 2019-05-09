@@ -12,14 +12,9 @@ class Faq extends MX_Controller {
 	}
 	public function index()
 	{
-		$login = $this->session->userdata('is_login');
-		if ($login) {
-			$data['faq'] = $this->model_crud->getData($this->table,$this->primary_key,'desc');
-			$data['page'] = 'dashboard/faq/v_faq';
-			$this->load->view('templates/template',$data);
-		}else{
-			redirect(base_url('login'),'refresh');
-		}			
+		$data['faq'] = $this->model_crud->getData($this->table,$this->primary_key,'desc');
+		$data['page'] = 'dashboard/faq/v_faq';
+		$this->load->view('templates/template',$data);			
 	}
 	public function simpan()
 	{

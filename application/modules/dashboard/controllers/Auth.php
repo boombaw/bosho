@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends MX_Controller {
+class Auth extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -30,12 +30,7 @@ class Auth extends MX_Controller {
 				echo json_encode(['result' => 'ok','uri' => 'dashboard']);
 			}
 		}else{
-			$is_login = $this->session->userdata('is_login');
-			if ($is_login == false) {
-				$this->load->view('auth/v_login');
-			}else{
-				redirect('dashboard');
-			}
+			$this->load->view('auth/v_login');
 		}
 	}
 

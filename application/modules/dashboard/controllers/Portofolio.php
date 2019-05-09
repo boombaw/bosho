@@ -13,15 +13,9 @@ class Portofolio extends MX_Controller {
 	}
 	public function index()
 	{
-		$login = $this->session->userdata('is_login');
-		if ($login) {
-			$data['portofolio']=$this->model_crud->getData($this->table,$this->primary_key,'desc');
-			$data['page'] = $this->path_portofolio.'v_portofolio';
-			$this->load->view('templates/template',$data);
-		}else{
-			redirect(base_url('login'),'refresh');
-		}	
-			
+		$data['portofolio']=$this->model_crud->getData($this->table,$this->primary_key,'desc');
+		$data['page'] = $this->path_portofolio.'v_portofolio';
+		$this->load->view('templates/template',$data);
 	}
 	public function tambah()
 	{

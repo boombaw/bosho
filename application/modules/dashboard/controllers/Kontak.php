@@ -2,25 +2,20 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kontak extends MX_Controller {
-	public $login=false;
-public function __construct(){
+	
+	public function __construct(){
 		parent::__construct();
-		$this->login = $this->session->userdata('is_login');
 	}
 	public function index()
 	{
-		if ($login) {
-			$kontak            = $this->model_crud->getData('tbl_kontak','id_kontak','desc');
-			$jmlKontak         = count($kontak);
-			$data['kontak']    = $kontak;
-			$data['jmlKontak'] = $jmlKontak;
-			$data['page']      = 'dashboard/kontak/v_kontak';
-			$this->load->view('templates/template',$data);
-		}else{
-			redirect(base_url('login'),'refresh');
-		}
-			
+		$kontak            = $this->model_crud->getData('tbl_kontak','id_kontak','desc');
+		$jmlKontak         = count($kontak);
+		$data['kontak']    = $kontak;
+		$data['jmlKontak'] = $jmlKontak;
+		$data['page']      = 'dashboard/kontak/v_kontak';
+		$this->load->view('templates/template',$data);
 	}
+
 	public function tambah()
 	{
 		if ($login) {
@@ -46,17 +41,13 @@ public function __construct(){
 		$this->model_crud->insertdata('tbl_kontak',$data);
 	}
 
-	public function edit($id)
+	public function edit($id=null)
 	{
-		if ($login) {
-			if (@$id) {
-				$arrUser      = $this->model_crud->getDetail('tbl_kontak','id_kontak',$id)->result();
-				$data['user'] = reset($arrUser);
-				$data['page'] = 'dashboard/kontak/v_edit_kontak';
-				$this->load->view('templates/template',$data);
-			}
-		}else{
-			redirect(base_url('login'),'refresh');
+		if (@$id) {
+			$arrUser      = $this->model_crud->getDetail('tbl_kontak','id_kontak',$id)->result();
+			$data['user'] = reset($arrUser);
+			$data['page'] = 'dashboard/kontak/v_edit_kontak';
+			$this->load->view('templates/template',$data);
 		}
 	}
 

@@ -11,25 +11,15 @@ class User extends MX_Controller {
 
 	public function index()
 	{
-		$login = $this->session->userdata('is_login');
-		if($login){
-			$data['user']=$this->model_crud->getData('tbl_pengguna','nama','asc');
-			$data['page'] = 'dashboard/user/v_user';
-			$this->load->view('templates/template',$data);
-		}else{
-			redirect(base_url('login'),'refresh');
-		}
+		$data['user']=$this->model_crud->getData('tbl_pengguna','nama','asc');
+		$data['page'] = 'dashboard/user/v_user';
+		$this->load->view('templates/template',$data);
 			
 	}
 	public function tambah()
 	{
-		$login = $this->session->userdata('is_login');
-		if($login){
-			$data['page'] = 'dashboard/user/v_add_user';
-			$this->load->view('templates/template',$data);
-		}else{
-			redirect(base_url('login'),'refresh');
-		}
+		$data['page'] = 'dashboard/user/v_add_user';
+		$this->load->view('templates/template',$data);
 			
 	}
 	public function add()
@@ -49,18 +39,13 @@ class User extends MX_Controller {
 	}
 
 	// Edit
-	public function edit($id='')
+	public function edit($id=null)
 	{
-		$login = $this->session->userdata('is_login');
-		if ($login) {
-			if (@$id) {
-				$arrUser = $this->model_crud->getDetail('tbl_pengguna','id_pengguna',$id)->result();
-				$data['user'] = reset($arrUser);
-				$data['page'] = 'dashboard/user/v_edit_user';
-				$this->load->view('templates/template',$data);
-			}
-		}else{
-			redirect(base_url('login'),'refresh');
+		if (@$id) {
+			$arrUser = $this->model_crud->getDetail('tbl_pengguna','id_pengguna',$id)->result();
+			$data['user'] = reset($arrUser);
+			$data['page'] = 'dashboard/user/v_edit_user';
+			$this->load->view('templates/template',$data);
 		}
 		
 	}

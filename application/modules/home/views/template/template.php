@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title><?php echo $signature->singkatan ?></title>
+		<title><?php echo $signature->nama_company ?></title>
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<meta content="" name="keywords">
 		<meta content="" name="description">
@@ -66,8 +66,8 @@
 										<span class="icon-bar"></span>
 									</button>
 									<!-- Brand -->
-									<a class="navbar-brand page-scroll sticky-logo" href="index.html">
-										<h1><span><?php echo $signature->singkatan ?> </span><?php echo $signature->nama_company ?></h1>
+									<a class="navbar-brand page-scroll sticky-logo" href="<?php echo base_url();?>">
+										<h1><span><?php echo $signature->singkatan ?> </span></h1>
 										<!-- Uncomment below if you prefer to use an image logo -->
 										<!-- <img src="img/logo.png" alt="" title=""> -->
 									</a>
@@ -408,23 +408,21 @@
 							<div class="footer-content">
 								<div class="footer-head">
 									<div class="footer-logo">
-										<h2><span><?php echo $signature->singkatan ?> </span><?php echo $signature->nama_company ?></h2>
+										<h2><span><?php echo $signature->singkatan ?></span></h2>
+										<h3><?php echo $signature->nama_company ?></h3>
 									</div>
 
 									<p><?php echo $about->keterangan?></p>
 									<div class="footer-icons">
 										<ul>
 											<li>
-												<a href="#"><i class="fa fa-facebook"></i></a>
+												<a href="https://www.youtube.com/channel/UChS4tDx8FnePap6DrmEN4pA"><i class="fa fa-youtube"></i></a>
 											</li>
 											<li>
-												<a href="#"><i class="fa fa-twitter"></i></a>
+												<a href="https://wa.me/6281219595862/"><i class="fa fa-whatsapp"></i></a>
 											</li>
 											<li>
-												<a href="#"><i class="fa fa-whatsapp"></i></a>
-											</li>
-											<li>
-												<a href="#"><i class="fa fa-instagram"></i></a>
+												<a href="https://www.instagram.com/aswanggamediakarya/"><i class="fa fa-instagram"></i></a>
 											</li>
 										</ul>
 									</div>
@@ -435,11 +433,8 @@
 						<div class="col-md-4 col-sm-4 col-xs-12">
 							<div class="footer-content">
 								<div class="footer-head">
-									<h4>information</h4>
+									<h4>informasi</h4>
 									<?php foreach($contacts as $row){?>
-										<p>
-											<?php echo $row->jdl_alamat ?>
-										</p>
 										<div class="footer-contacts">
 											<p><span>Telepon:</span> <?php echo $row->tlp_ktk ?></p>
 											<p><span>Email:</span> <?php echo $row->email_ktk ?></p>

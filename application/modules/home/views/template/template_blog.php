@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>eBusiness Bootstrap Template</title>
+  <title><?php echo $signature->nama_company ?></title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="<?php echo base_url(); ?>assets/ebusiness/img/favicon.png" rel="icon">
-  <link href="<?php echo base_url(); ?>assets/ebusiness/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="<?php echo base_url(); ?>unggah/logo/<?php echo $signature->logo ?>" rel="icon">
+	<link href="<?php echo base_url(); ?>unggah/logo/<?php echo $signature->logo ?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
@@ -64,38 +64,38 @@
 										<span class="icon-bar"></span>
 									</button>
                 <!-- Brand -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
-                  <h1><span>e</span>Business</h1>
+									<a class="navbar-brand page-scroll sticky-logo" href="<?php echo base_url();?>">
+										<h1><span><?php echo $signature->singkatan ?> </span></h1>
                   <!-- Uncomment below if you prefer to use an image logo -->
                   <!-- <img src="img/logo.png" alt="" title=""> -->
 								</a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="active">
-                    <a class="page-scroll" href="#home">Home</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#about">About</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#services">Services</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#team">Team</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#blog">Blog</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
-                  </li>
-                </ul>
-              </div>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active">
+							<a class="page-scroll" href="<?php echo base_url();?>#beranda">Beranda</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="<?php echo base_url();?>#tentang">Tentang</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="<?php echo base_url();?>#services">Services</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="<?php echo base_url();?>#klien">Klien</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="<?php echo base_url();?>#portfolio">Portfolio</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="<?php echo base_url();?>#harga">Harga</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="<?php echo base_url();?>#artikel">Artikel</a>
+						</li>
+					</ul>
+				</div>
               <!-- navbar-collapse -->
             </nav>
             <!-- END: Navigation -->
@@ -206,95 +206,124 @@
   <div class="clearfix"></div>
 
   <!-- Start Footer bottom Area -->
-	<footer>
-		<div class="footer-area">
-		  <div class="container">
-			<div class="row">
-			  <div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="footer-content">
-				  <div class="footer-head">
-					<div class="footer-logo">
-					  <h2><span>e</span>Business</h2>
-					</div>
+		<footer>
+			<div class="footer-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<div class="footer-logo">
+										<h2><span><?php echo $signature->singkatan ?></span></h2>
+										<h3><?php echo $signature->nama_company ?></h3>
+									</div>
 
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
-					<div class="footer-icons">
-					  <ul>
-						<li>
-						  <a href="#"><i class="fa fa-facebook"></i></a>
-						</li>
-						<li>
-						  <a href="#"><i class="fa fa-twitter"></i></a>
-						</li>
-						<li>
-						  <a href="#"><i class="fa fa-google"></i></a>
-						</li>
-						<li>
-						  <a href="#"><i class="fa fa-pinterest"></i></a>
-						</li>
-					  </ul>
+									<p><?php echo $about->keterangan?></p>
+									<div class="footer-icons">
+										<ul>
+											<li>
+												<a href="https://www.youtube.com/channel/UChS4tDx8FnePap6DrmEN4pA"><i class="fa fa-youtube"></i></a>
+											</li>
+											<li>
+												<a href="https://wa.me/6281219595862/"><i class="fa fa-whatsapp"></i></a>
+											</li>
+											<li>
+												<a href="https://www.instagram.com/aswanggamediakarya/"><i class="fa fa-instagram"></i></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end single footer -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<h4>Informasi</h4>
+									<?php foreach($contacts as $row){?>
+										<div class="footer-contacts">
+											<p><span>Telepon:</span> <?php echo $row->tlp_ktk ?></p>
+											<p><span>Email:</span> <?php echo $row->email_ktk ?></p>
+											<p><span>Alamat:</span> <?php echo $row->alamat ?></p>
+										</div>
+									<?php } ?>
+								</div>
+							</div>
+						</div>
+						<!-- end single footer -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<h4>Menu</h4>
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-4">
+											<ul>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#beranda">Beranda</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#tentang">Tentang</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#services">Services</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#klien">Klien</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#faq">FAQ</a>
+												</li>
+											</ul>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-4">
+											<ul>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#portfolio">Portfolio</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#harga">Harga</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#artikel">Artikel</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#testimonial">Testimonial</a>
+												</li>
+												<li>
+													<a class="page-scroll" href="<?php echo base_url();?>#kontak">Kontak</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				  </div>
 				</div>
-			  </div>
-			  <!-- end single footer -->
-			  <div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="footer-content">
-				  <div class="footer-head">
-					<h4>information</h4>
-					<p>
-					  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-					</p>
-					<div class="footer-contacts">
-					  <p><span>Tel:</span> +123 456 789</p>
-					  <p><span>Email:</span> contact@example.com</p>
-					  <p><span>Working Hours:</span> 9am-5pm</p>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  <!-- end single footer -->
-			  <div class="col-md-4 col-sm-4 col-xs-12">
-				<div class="footer-content">
-				  <div class="footer-head">
-					<h4>Instagram</h4>
-					<div class="flicker-img">
-					  <a href="#"><img src="<?php echo base_url(); ?>assets/ebusiness/img/portfolio/1.jpg" alt=""></a>
-					  <a href="#"><img src="<?php echo base_url(); ?>assets/ebusiness/img/portfolio/2.jpg" alt=""></a>
-					  <a href="#"><img src="<?php echo base_url(); ?>assets/ebusiness/img/portfolio/3.jpg" alt=""></a>
-					  <a href="#"><img src="<?php echo base_url(); ?>assets/ebusiness/img/portfolio/4.jpg" alt=""></a>
-					  <a href="#"><img src="<?php echo base_url(); ?>assets/ebusiness/img/portfolio/5.jpg" alt=""></a>
-					  <a href="#"><img src="<?php echo base_url(); ?>assets/ebusiness/img/portfolio/6.jpg" alt=""></a>
-					</div>
-				  </div>
-				</div>
-			  </div>
 			</div>
-		  </div>
-		</div>
-		<div class="footer-area-bottom">
-		  <div class="container">
-			<div class="row">
-			  <div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="copyright text-center">
-				  <p>
-					&copy; Copyright <strong>eBusiness</strong>. All Rights Reserved
-				  </p>
+			<div class="footer-area-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="copyright text-center">
+								<p>
+									&copy; Copyright <strong>eBusiness</strong>. All Rights Reserved
+								</p>
+							</div>
+							<div class="credits">
+								  <!--
+									All the links in the footer should remain intact.
+									You can delete the links only if you purchased the pro version.
+									Licensing information: https://bootstrapmade.com/license/
+									Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
+								  -->
+								Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="credits">
-				  <!--
-					All the links in the footer should remain intact.
-					You can delete the links only if you purchased the pro version.
-					Licensing information: https://bootstrapmade.com/license/
-					Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
-				  -->
-				  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-				</div>
-			  </div>
 			</div>
-		  </div>
-		</div>
-	</footer>
+		</footer>
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 

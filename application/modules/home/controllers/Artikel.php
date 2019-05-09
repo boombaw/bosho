@@ -7,6 +7,9 @@ class Artikel extends CI_Controller {
 	{
 		$this->load->model('model_portofolio');
 		$this->load->model('model_artikel');
+		$data['signature'] = $this->model_crud->getDetail('tbl_signature','id_c',1)->row();
+		$data['contacts'] = $this->model_crud->getData('tbl_kontak','id_kontak','desc');
+		$data['about'] = $this->model_crud->getDetail('tbl_about','id_about',1)->row();
 		$data['portofolio_limit'] = $this->model_portofolio->getpp('tbl_portofolio','id_portofolio','desc');
 		$data['artikel_limit'] = $this->model_artikel->getartikel('tbl_artikel','id_artikel','desc');
 		$data['portofolios'] = $this->model_crud->getData('tbl_portofolio','id_portofolio','desc');

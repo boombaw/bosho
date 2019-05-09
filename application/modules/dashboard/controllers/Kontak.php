@@ -2,15 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kontak extends MX_Controller {
-	
+	public $login=false;
 public function __construct(){
 		parent::__construct();
-		//$this->load->model('model_user');
+		$this->login = $this->session->userdata('is_login');
 	}
 	public function index()
 	{
-		$login = $this->session->userdata('is_login');
-		if ($login()) {
+		if ($login) {
 			$kontak            = $this->model_crud->getData('tbl_kontak','id_kontak','desc');
 			$jmlKontak         = count($kontak);
 			$data['kontak']    = $kontak;

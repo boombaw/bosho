@@ -60,7 +60,9 @@ public function __construct(){
 					'judul'			=> $this->input->post('judul'),
 					'isi'			=> $this->input->post('isi'),
 					'thumbnail'		=>  xss_clean($filename),
-					'dt_artikel'	=> date("Y-m-d H:i:s")
+					'dt_artikel'	=> date("Y-m-d H:i:s"),
+					'tag'			=> $this->input->post('tag'),
+					'metad'			=> $this->input->post('metad')
 				);
 				
 				
@@ -121,7 +123,9 @@ public function __construct(){
 					'judul'			=> $this->input->post('judul'),
 					'isi'			=> $this->input->post('isi'),
 					'thumbnail'		=>  xss_clean($filename),
-					'dt_artikel'	=> date("Y-m-d H:i:s")
+					'dt_artikel'	=> date("Y-m-d H:i:s"),
+					'tag'			=> $this->input->post('tag'),
+					'metad'			=> $this->input->post('metad')
 				);
 				
 				

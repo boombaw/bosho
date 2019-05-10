@@ -6,7 +6,7 @@
 			<?php foreach($artikels as $row){?>
 				<div class="single-blog-img">
 					<a href="<?php echo base_url(); ?>home/artikel/detail/<?php echo $row->id_artikel?>">
-						<img src="<?php echo base_url(); ?>unggah/artikel/<?php echo $row->thumbnail?>" alt="">
+						<img src="<?php echo base_url(); ?>unggah/artikel/<?php echo $row->thumbnail?>" alt="<?php echo $row->thumbnail?>">
 					</a>
 				</div>
 				<div class="blog-meta">

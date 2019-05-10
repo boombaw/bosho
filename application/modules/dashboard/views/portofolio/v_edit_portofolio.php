@@ -57,6 +57,21 @@
 							</div>
 						</div>
 						<div class="col-sm-12">
+							<div class="form-group form-float">
+								<div class="form-line">
+									<input type="text" class="form-control" name="metad" value="<?php echo $artikel->metad ?>" maxlength="150">
+									<label class="form-label" >Meta Deskripsi</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group demo-tagsinput-area">
+								<div class="form-line">
+									<input type="text" class="form-control" name="tag" data-role="tagsinput" value="<?php echo $artikel->tag ?>" placeholder="Tag (pisahkan dengan koma)">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12">
 							<center>
 								<button type="submit" id="editport" class="btn bg-deep-orange waves-effect waves-black btn-lg">Simpan</button>
 							</center>

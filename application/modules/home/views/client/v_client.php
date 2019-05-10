@@ -19,7 +19,7 @@
 	</div>
 	<div class="gal">
 	<?php foreach($clients as $row){?>
-		<img src="<?php echo base_url();?>unggah/klien/<?php echo $row->image?>">			
+		<img src="<?php echo base_url();?>unggah/klien/<?php echo $row->image?>" alt="<?php echo $row->image?>">			
 	<?php }?>
 	</div>
 </div>

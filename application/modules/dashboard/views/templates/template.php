@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="robots" content="none" />
+	<meta name="googlebot" content="none" />
     <title><?php echo $web['nama_company'] ?></title>
     <!-- Favicon-->
     <link rel="icon" href="<?php echo base_url(); ?>unggah/logo/<?php echo $web['logo'] ?>" type="image/x-icon">
@@ -22,6 +24,9 @@
 	
     <!-- Waves Effect Css -->
     <link href="<?php echo base_url(); ?>assets/adminbsb/plugins/node-waves/waves.css" rel="stylesheet" />
+	
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="<?php echo base_url(); ?>assets/adminbsb/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
 	
     <!-- Light Gallery Plugin Css -->
     <link href="<?php echo base_url(); ?>assets/adminbsb/plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
@@ -529,6 +534,9 @@
 	
     <!-- SweetAlert Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/sweetalert/sweetalert.min.js"></script>
+	
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
 	
     <!-- Light Gallery Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/light-gallery/js/lightgallery-all.js"></script>

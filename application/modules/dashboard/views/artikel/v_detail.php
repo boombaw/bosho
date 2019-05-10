@@ -6,6 +6,6 @@
 <center>
 	<b><?php echo $artikel->judul ?><b><br>
 <img src="<?php echo base_url('unggah/artikel/'.$artikel->thumbnail)?>" style="max-width:300px;">
-</center><br>
+<br>Tag : <?php echo $artikel->tag ?></center><br>
 <?php echo $artikel->isi ?>
 </div>

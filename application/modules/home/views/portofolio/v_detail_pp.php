@@ -4,7 +4,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="blog-post-wrapper">
 				<div class="post-thumbnail">
-						<img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $portofolios->thumbnail?>" alt="">
+						<img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $portofolios->thumbnail?>" alt="<?php echo $portofolios->thumbnail?>">
 				
 				</div>
                 <div class="post-information">

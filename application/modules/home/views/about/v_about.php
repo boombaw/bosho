@@ -11,7 +11,7 @@
           <div class="well-left">
             <div class="single-well">
 				<a href="#">
-				  <img src="<?php echo base_url(); ?>unggah/about/<?php echo $about->image?>" alt="">
+				  <img src="<?php echo base_url(); ?>unggah/about/<?php echo $about->image?>" alt="<?php echo $about->image?>">
 				</a>
             </div>
           </div>

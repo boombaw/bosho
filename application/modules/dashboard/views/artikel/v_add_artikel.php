@@ -37,7 +37,21 @@
 											</div>
 										</div>
 									</div>
-									
+									<div class="col-sm-12">
+										<div class="form-group form-float">
+											<div class="form-line">
+												<input type="text" class="form-control" name="metad" value="" maxlength="150">
+												<label class="form-label" >Meta Deskripsi (max. 150 Karakter)</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="form-group demo-tagsinput-area">
+											<div class="form-line">
+												<input type="text" class="form-control" name="tag" data-role="tagsinput" value="" placeholder="Tag (pisahkan dengan koma)">
+											</div>
+										</div>
+									</div>
 									<div class="col-sm-12">
 									<center>
 										<button type="submit" id="save" class="btn bg-deep-orange waves-effect waves-black btn-lg">Simpan</button>

@@ -15,7 +15,7 @@
           <div class="col-md-4 col-sm-4 col-xs-12 design development">
             <div class="single-awesome-project">
               <div class="awesome-img">
-                <a href="#"><img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $row->thumbnail?>" alt="" /></a>
+                <a href="#"><img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $row->thumbnail?>" alt="<?php echo $row->thumbnail?>" /></a>
                 <div class="add-actions text-center">
                   <div class="project-dec">
                     <a href="<?php echo base_url(); ?>home/portofolio/detail/<?php echo $row->id_portofolio?>">

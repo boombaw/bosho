@@ -1,12 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8">
-  <title><?php echo $signature->nama_company ?></title>
+  <?php if(!empty($this->uri->segment(3))){?>
+	<title><?php echo $signature->nama_company.' : '.$deskrip ?></title>
+		<?php if($title=='Artikel'){?>
+			<meta content="<?php echo $artikels->tag?>" name="keywords">
+			<meta content="<?php echo $artikels->metad?>" name="description">
+		<?php }elseif($title=='Portofolio'){?>
+			<meta content="<?php echo $portofolios->tag?>" name="keywords">
+			<meta content="<?php echo $portofolios->metad?>" name="description">
+		<?php }?>
+  <?php }else{?>
+	  <title><?php echo $signature->nama_company.' : '.$title ?></title>
+  <?php }?>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta content="<?php echo $signature->nama_company ?>,<?php echo $signature->singkatan ?>" name="keywords">
+  <meta content="<?php echo $title.' '.$signature->nama_company.' '.$signature->singkatan?>" name="description">
+  <meta content="<?php echo $signature->nama_company ?>" name="author">
+  <meta content="id" name="language">
+  <meta content="id" name="geo.country">
   <!-- Favicons -->
 	<link href="<?php echo base_url(); ?>unggah/logo/<?php echo $signature->logo ?>" rel="icon">
 	<link href="<?php echo base_url(); ?>unggah/logo/<?php echo $signature->logo ?>" rel="apple-touch-icon">
@@ -74,7 +89,7 @@
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active">
-							<a class="page-scroll" href="<?php echo base_url();?>#beranda">Beranda</a>
+							<a class="page-scroll" href="<?php echo base_url();?>">Beranda</a>
 						</li>
 						<li>
 							<a class="page-scroll" href="<?php echo base_url();?>#tentang">Tentang</a>
@@ -155,12 +170,12 @@
 								  <?php foreach($portofolio_limit as $row){?>
 									<div class="recent-single-post">
 										<div class="post-img">
-											<a href="#">
-												<img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $row->thumbnail?>" alt="">
+											<a href="<?php echo base_url();?>/home/portofolio/detail/<?php echo $row->id_portofolio?>">
+												<img src="<?php echo base_url(); ?>unggah/portofolio/<?php echo $row->thumbnail?>" alt="<?php echo $row->thumbnail?>">
 											</a>
 										</div>
 										<div class="pst-content">
-											<p><a href="#"> <?php echo $row->judul?></a></p>
+											<p><a href="<?php echo base_url();?>/home/portofolio/detail/<?php echo $row->id_portofolio?>"> <?php echo $row->judul?></a></p>
 										</div>
 									</div>
 								  <?php } ?>
@@ -178,12 +193,12 @@
 									<?php foreach($artikel_limit as $row){?>
 										<div class="recent-single-post">
 											<div class="post-img">
-												<a href="#">
-													<img src="<?php echo base_url(); ?>unggah/artikel/<?php echo $row->thumbnail?>" alt="">
+												<a href="<?php echo base_url();?>/home/artikel/detail/<?php echo $row->id_artikel?>">
+													<img src="<?php echo base_url(); ?>unggah/artikel/<?php echo $row->thumbnail?>" alt="<?php echo $row->thumbnail?>">
 												</a>
 											</div>
 											<div class="pst-content">
-												<p><a href="#"> <?php echo $row->judul?></a></p>
+												<p><a href="<?php echo base_url();?>/home/artikel/detail/<?php echo $row->id_artikel?>"> <?php echo $row->judul?></a></p>
 											</div>
 										</div>
 									<?php } ?>
@@ -259,7 +274,7 @@
 										<div class="col-md-4 col-sm-4 col-xs-4">
 											<ul>
 												<li>
-													<a class="page-scroll" href="<?php echo base_url();?>#beranda">Beranda</a>
+													<a class="page-scroll" href="<?php echo base_url();?>">Beranda</a>
 												</li>
 												<li>
 													<a class="page-scroll" href="<?php echo base_url();?>#tentang">Tentang</a>

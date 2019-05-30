@@ -82,7 +82,6 @@ $db['default'] = array(
 	'database' => 'db_bosho',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
-	'port' => '3360',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,

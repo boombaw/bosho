@@ -71,7 +71,8 @@
 									</button>
 									<!-- Brand -->
 									<a class="navbar-brand page-scroll sticky-logo" href="<?php echo base_url();?>">
-										<h1><span><?php echo $signature->singkatan ?> </span></h1>
+										<h1><img src="<?php echo base_url(); ?>unggah/logo/<?php echo $signature->logo ?>" style="max-width:60px">
+									<span><?php echo $signature->singkatan ?> </span></h1>
 										<!-- Uncomment below if you prefer to use an image logo -->
 										<!-- <img src="img/logo.png" alt="" title=""> -->
 									</a>
@@ -424,6 +425,9 @@
 											</li>
 											<li>
 												<a href="https://wa.me/6281219595862/"><i class="fa fa-whatsapp"></i></a>
+											</li>
+											<li>
+												<a href="https://wa.me/6287785085672/"><i class="fa fa-whatsapp"></i></a>
 											</li>
 											<li>
 												<a href="https://www.instagram.com/aswanggamediakarya/"><i class="fa fa-instagram"></i></a>

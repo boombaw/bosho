@@ -451,10 +451,6 @@
                                     alert(error)
                                 }                            
 
-                                if($("#tag").length < 0){
-                                    error = 'Tag tidak boleh kosong'; 
-                                    alert(error)
-                                }
                             });
 
                             this.on('sending', function(file, xhr, formData) {

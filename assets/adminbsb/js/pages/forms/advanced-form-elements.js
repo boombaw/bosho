@@ -38,7 +38,6 @@
 			});
 		});
 	}
-	console.log(base_url);
 
 	// Hapus Foto
 	$(document).on('click','.rem-image',function (e) {

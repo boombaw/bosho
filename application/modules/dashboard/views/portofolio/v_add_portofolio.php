@@ -49,7 +49,7 @@
 						<div class="col-sm-12">
 							<div class="form-group form-float">
 								<div class="form-line">
-									<input type="text" class="form-control" name="metad" value="" maxlength="150">
+									<input type="text" class="form-control" name="metad" value="" maxlength="150" required>
 									<label class="form-label" >Meta Deskripsi (max. 150 Karakter)</label>
 								</div>
 							</div>

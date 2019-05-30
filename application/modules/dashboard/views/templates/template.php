@@ -403,13 +403,6 @@
     <!-- Bootstrap Datepicker Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
-    <!-- Flot Charts Plugin Js -->
-    <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/flot-charts/jquery.flot.time.js"></script>
-
     <!-- Sparkline Chart Plugin Js -->
     <script src="<?php echo base_url(); ?>assets/adminbsb/plugins/jquery-sparkline/jquery.sparkline.js"></script>
 

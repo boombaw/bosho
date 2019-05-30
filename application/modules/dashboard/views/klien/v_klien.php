@@ -49,7 +49,7 @@
 <script>
 if (window.location.host == 'localhost'){
 		var get_url = window.location;
-		var base = get_url.protocol+'//'+get_url.host+'/bosho1';
+		var base = get_url.protocol+'//'+get_url.host+'/bosho';
 	} else {
 		var base = window.location.origin;
 	}

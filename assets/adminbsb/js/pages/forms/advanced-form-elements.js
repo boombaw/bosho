@@ -1,6 +1,6 @@
 
 	Dropzone.autoDiscover = false;
-	if ($('#DropzoneElementId').length) {
+	if ($('#frmFileUpload').length) {
 		
 		//Dropzone
 		var foto_upload = new Dropzone("form#frmFileUpload",{

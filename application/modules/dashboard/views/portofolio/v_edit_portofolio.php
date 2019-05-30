@@ -113,13 +113,13 @@
 					$("#a-thumbnials").empty(""); 
 					$.ajax({
 						type: "POST",
-						url: "<?php echo base_url() ?>/dashboard/portofolio/tport", //script php untuk mengecek pesan, didalamnya berupa query select
+						url: "<?php echo base_url() ?>/dashboard/portofolio/tport", 
 						data:{token:pid},
 						cache: false,
 						dataType: "HTML",
 						success: function(msg){ 
-							console.log(msg)
-							$("#a-thumbnials").html(msg);
+							// $("#a-thumbnials").html(msg);
+							location.reload(true)
 						}
 					});
 				},

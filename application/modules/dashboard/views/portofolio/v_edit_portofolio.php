@@ -33,7 +33,7 @@
 						<div class="col-sm-12">
 							<div class="form-group form-float">
 								<div class="form-line">
-									<input type="file" id="thumb" name="files" value="<?php echo $portofolio->thumbnail ?>" class="form-control-file" >
+									<input type="file" id="thumb" name="files" value="" class="form-control-file" required>
 								</div>
 							</div>
 						</div>
@@ -59,7 +59,7 @@
 						<div class="col-sm-12">
 							<div class="form-group form-float">
 								<div class="form-line">
-									<input type="text" class="form-control" name="metad" value="<?php echo $artikel->metad ?>" maxlength="150">
+									<input type="text" class="form-control" id="e-metad" name="metad" value="<?php echo $portofolio->metad ?>" maxlength="150">
 									<label class="form-label" >Meta Deskripsi</label>
 								</div>
 							</div>
@@ -67,7 +67,7 @@
 						<div class="col-sm-12">
 							<div class="form-group demo-tagsinput-area">
 								<div class="form-line">
-									<input type="text" class="form-control" name="tag" data-role="tagsinput" value="<?php echo $artikel->tag ?>" placeholder="Tag (pisahkan dengan koma)">
+									<input type="text" class="form-control" id="e-tag" name="tag" data-role="tagsinput" value="<?php echo $portofolio->tag ?>" placeholder="Tag (pisahkan dengan koma)">
 								</div>
 							</div>
 						</div>

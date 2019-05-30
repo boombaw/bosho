@@ -58,7 +58,7 @@
 					alert("Foto terhapus");
 					$.ajax({
 						type: "POST",
-						url: base+"dashboard/klien/index1", //script php untuk mengecek pesan, didalamnya berupa query select
+						url: base+"dashboard/klien/index1", 
 						cache: false,
 						dataType: "HTML",
 						success: function(msg){ 

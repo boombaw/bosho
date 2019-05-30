@@ -449,7 +449,18 @@
                                 } else {     
                                     error = 'Lampirkan Bukti galeri portofolio'; 
                                     alert(error)
-                                }                            
+                                }   
+
+                      if($("#tag").length <= 0){
+                                         
+                                    error = 'Tag harus di isi'; 
+                                    alert(error)
+                                }      
+                     if($("#metad").length <= 0){
+                                         
+                                    error = 'Meta  harus di isi'; 
+                                    alert(error)
+                                }
 
                             });
 
@@ -461,6 +472,7 @@
                                 formData.append("title",$("#judul").val());
                                 formData.append("tag",$("#tag").val());
                                 formData.append("e1",editor);
+formData.append("metad",$("#metad").val());
                             });
 
                             this.on('success',function (res,xhr) {

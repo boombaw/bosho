@@ -57,7 +57,7 @@
 						<div class="col-sm-12">
 							<div class="form-group demo-tagsinput-area">
 								<div class="form-line">
-									<input type="text" class="form-control" name="tag" data-role="tagsinput" value="" placeholder="Tag (pisahkan dengan koma)">
+									<input type="text" class="form-control" id="tag" name="tag" data-role="tagsinput" value="" placeholder="Tag (pisahkan dengan koma)" required>
 								</div>
 							</div>
 						</div>

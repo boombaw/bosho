@@ -47,13 +47,12 @@
 </div>
 
 <script>
-if (window.location.host == 'localhost:8091'){
+if (window.location.host == 'localhost'){
 		var get_url = window.location;
-		var base = get_url.protocol+'//'+get_url.host+'/bosho';
+		var base = get_url.protocol+'//'+get_url.host+'/bosho1';
 	} else {
 		var base = window.location.origin;
 	}
-
 
 	function cek(){ //function untuk mengecek pesan 
 		$.ajax({

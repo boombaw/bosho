@@ -4,7 +4,7 @@
 		
 		//Dropzone
 		var foto_upload = new Dropzone("form#frmFileUpload",{
-			url: base_url+"/dashboard/klien/proses_upload",
+			url: base_url+"dashboard/klien/proses_upload",
 			paramName: "userfile",
 			method:"post",
 			acceptedFiles:"image/*",
@@ -25,7 +25,7 @@
 			$.ajax({
 				type:"post",
 				data:{token:token},
-				url: base_url+"/dashboard/klien/remove_foto",
+				url: base_url+"dashboard/klien/remove_foto",
 				cache:false,
 				dataType: 'json',
 				success: function(){
@@ -38,7 +38,7 @@
 			});
 		});
 	}
-	
+	console.log(base_url);
 
 	// Hapus Foto
 	$(document).on('click','.rem-image',function (e) {
@@ -59,7 +59,7 @@
 					alert("Foto terhapus");
 					$.ajax({
 						type: "POST",
-						url: base+"/dashboard/klien/index1", //script php untuk mengecek pesan, didalamnya berupa query select
+						url: base+"dashboard/klien/index1", //script php untuk mengecek pesan, didalamnya berupa query select
 						cache: false,
 						dataType: "HTML",
 						success: function(msg){ 

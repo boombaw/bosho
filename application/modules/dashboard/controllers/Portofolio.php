@@ -59,8 +59,8 @@ class Portofolio extends MX_Controller {
 					'image' 		=> xss_clean($filename)
 				);
 				$data = array(
-					'judul'			=> $this->input->post('title'),
-					'isi'			=> $this->input->post('e1'),
+					'judul'			=> $this->input->post('judul'),
+					'isi'			=> $this->input->post('isi'),
 					'thumbnail'		=>  xss_clean($filename),
 					'dt_portofolio'	=> date("Y-m-d H:i:s"),
 					'tag'			=> $this->input->post('tag'),

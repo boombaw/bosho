@@ -446,10 +446,11 @@
                                 
                                 if(myDropzone.files.length){
                                     myDropzone.processQueue();
-                                } else {                      
+                                } else {     
                                     error = 'Lampirkan Bukti galeri portofolio'; 
                                     alert(error)
                                 }                            
+
                             });
 
                             this.on('sending', function(file, xhr, formData) {
@@ -458,13 +459,15 @@
                                 var data = $('#frmPort').serializeArray();
                                 formData.append("thumbport",document.getElementById("thumb").files[0]);
                                 formData.append("title",$("#judul").val());
+                                formData.append("tag",$("#tag").val());
                                 formData.append("e1",editor);
                             });
 
                             this.on('success',function (res,xhr) {
+                                console.log(res);
                                 // alert(xhr);
                                 var uri = "<?php echo base_url('dashboard/portofolio') ?>";
-                                location.replace(uri);
+                                // location.replace(uri);
                                 
                             });
                         

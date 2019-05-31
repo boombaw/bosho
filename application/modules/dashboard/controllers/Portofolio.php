@@ -107,7 +107,7 @@ class Portofolio extends MX_Controller {
 					}
 				}
 
-				echo "<script>alert('Sukses');history.go(-1);</script>";
+				echo "Sukses";
 
 			} else {
 
@@ -198,6 +198,7 @@ class Portofolio extends MX_Controller {
 										);
 						
 						$this->model_crud->insertdata('tbl_thumbporto',$data);  		
+						echo "Sukses";
 					}else{
 						echo "<pre>";
 						print_r($this->upload->display_errors());

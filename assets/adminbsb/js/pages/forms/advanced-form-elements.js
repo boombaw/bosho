@@ -55,14 +55,15 @@
 				cache:false,
 				dataType: 'json',
 				success: function(){
-					alert("Foto terhapus");
+					// alert("Foto terhapus");
 					$.ajax({
 						type: "POST",
-						url: base+"dashboard/klien/index1", //script php untuk mengecek pesan, didalamnya berupa query select
+						url: base+"dashboard/klien/index1", 
 						cache: false,
 						dataType: "HTML",
 						success: function(msg){ 
-							$("#aniimated-thumbnials").html(msg);
+							location.reload(true);
+							// $("#aniimated-thumbnials").html(msg);
 						}
 					});
 				},

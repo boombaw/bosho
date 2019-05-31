@@ -444,6 +444,7 @@
                             $("#saveport").click(function (e) {
                                 e.preventDefault();
                                 
+
                                 if(myDropzone.files.length){
                                     myDropzone.processQueue();
                                 } else {     
@@ -451,12 +452,13 @@
                                     alert(error)
                                 }   
 
-                      if($("#tag").length <= 0){
+                                if($("#tag").length <= 0){
                                          
                                     error = 'Tag harus di isi'; 
                                     alert(error)
                                 }      
-                     if($("#metad").length <= 0){
+                                
+                                if($("#metad").length <= 0){
                                          
                                     error = 'Meta  harus di isi'; 
                                     alert(error)
@@ -468,18 +470,22 @@
                                 // Append all form inputs to the formData Dropzone will POST
                                 var editor = CKEDITOR.instances['editor1'].getData();
                                 var data = $('#frmPort').serializeArray();
-                                formData.append("thumbport",document.getElementById("thumb").files[0]);
-                                formData.append("title",$("#judul").val());
+                                var thumb =  document.getElementById("thumb").files;
+                                if(thumb.length > 0) {
+                                    formData.append("thumbport",document.getElementById("thumb").files[0]);
+                                }else{
+                                    formData.append("thumbport",'');                                    
+                                }
+                                formData.append("judul",$("#judul").val());
                                 formData.append("tag",$("#tag").val());
-                                formData.append("e1",editor);
-formData.append("metad",$("#metad").val());
+                                formData.append("isi",editor);
+                                formData.append("metad",$("#metad").val());
                             });
 
                             this.on('success',function (res,xhr) {
-                                console.log(res);
-                                // alert(xhr);
+                                alert(xhr);
                                 var uri = "<?php echo base_url('dashboard/portofolio') ?>";
-                                // location.replace(uri);
+                                location.replace(uri);
                                 
                             });
                         
@@ -508,12 +514,33 @@ formData.append("metad",$("#metad").val());
                         $("#editport").click(function (e) {
                             e.preventDefault();
                             
+                            var thumb = document.getElementById("thumb").files;
+
+                            if (thumb.length <= 0) { 
+                                error = 'Thumbnail harus di isi'; 
+                                alert(error)
+                                
+                            } 
+
                             if(myDropzone.files.length){
                                 myDropzone.processQueue();
                             } else {                      
                                 error = 'Lampirkan Bukti galeri portofolio'; 
                                 alert(error)
-                            }                            
+                            }       
+
+
+                            if($("#e-tag").length <= 0){
+                                     
+                                error = 'Tag harus di isi'; 
+                                alert(error)
+                            }      
+                            
+                            if($("#e-metad").length <= 0){
+                                     
+                                error = 'Meta  harus di isi'; 
+                                alert(error)
+                            }                     
                         });
 
                         this.on('sending', function(file, xhr, formData) {
@@ -521,14 +548,21 @@ formData.append("metad",$("#metad").val());
                             var editor = CKEDITOR.instances['editor2'].getData();
                             var data = $('#formeport').serializeArray();
                             var id = $('#formeport').attr('eid');
-                            formData.append("thumbport",document.getElementById("thumb").files[0]);
-                            formData.append("title",$("#judul").val());
-                            formData.append("e1",editor);
+                            var thumb =  document.getElementById("thumb").files;
+                            if(thumb.length > 0) {
+                                formData.append("thumbport",document.getElementById("thumb").files[0]);
+                            }else{
+                                formData.append("thumbport",'');                                    
+                            }
+                            formData.append("judul",$("#judul").val());
+                            formData.append("tag",$("#e-tag").val());
+                            formData.append("metad",$("#e-metad").val());
+                            formData.append("isi",editor);
                             formData.append("asd",id);
                         });
 
                         this.on('success',function (res,xhr) {
-                            // alert(xhr);
+                            alert(xhr);
                             var uri = "<?php echo base_url('dashboard/portofolio') ?>";
                             location.replace(uri);
                             
